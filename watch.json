@@ -1,0 +1,17 @@
+{
+  "install": {
+    "include": [
+      "^package\\.json$"
+    ]
+  },
+  "restart": {
+    "include": [
+      "^.trigger-rebuild$"
+    ],
+    "exclude": [
+      "\\.js$",
+      "^src/"
+    ]
+  },
+  "throttle": 100
+}

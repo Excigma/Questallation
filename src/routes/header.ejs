@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+
+	<title>ExcigmaBot
+		<%- path.slice(1).length > 0 ? `| ${path.slice(1).toProperCase()}` : "" %>
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+	<!-- Meta Data -->
+	<meta name="theme-color" content="#7289da">
+	<meta content="/public/images/icons/icon-16.jpg" property="og:image" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/icon-16.jpg">
+	<meta content="ExcigmaBot" property="og:title" />
+
+	<meta content="ExcigmaBot's homepage" property="og:description" />
+	<meta content="ExcigmaBot's homepage" name="description" />
+
+	<meta name="revisit-after" content="2 days">
+
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:url" content="/" />
+	<meta property="og:site_name" content="ExcigmaBot" />
+	<meta property="og:image" content="/assets/images/icon-16.jpg" />
+
+	<!-- CSS compressed: https://cssnano.co/playground/ -->
+
+	<link async href="/assets/css/modesta.min.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="fullscreen">
+		<div class="background" style="background-image: url('/assets/images/icon-128.jpg');"></div>
+		<div class="center-object">
+			<section class="me">
+				<img draggable="false" src="/assets/images/icon-72.jpg" class="image-title no-select">
+				<h1 class="title bold no-select">ExcigmaBot
+					<%- path.slice(1).length > 0 ? ` | ${path.slice(1).toProperCase()}.` : "" %>
+				</h1>
+			</section>
+			<div class="buttons no-select">
+				<a href="/" class="btn emerald animation hover no-select material-button-raised">
+					Home</a>
+				<a href="/commands" class="btn orange animation hover no-select">
+					Commands</a>
+				<a href="/credits" class="btn pomegranate animation hover no-select">
+					Credits</a>
+				<a href="/support" class="btn discord animation hover no-select" target="_blank" rel="noreferrer">
+					Discord</a>
+				<a href="/invite" class="btn emerald animation hover no-select" target="_blank" rel="noreferrer">
+					Add me</a>
+			</div>
+		</div>
+
+		<a href="#information">
+			<div class="arrow bounce"></div>
+		</a>
+	</div>
