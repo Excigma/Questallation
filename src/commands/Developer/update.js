@@ -16,7 +16,6 @@ git reset --hard FETCH_HEAD
 git clean -df
 `, { timeout: 30000 });
 
-
 		var out = [];
 		if (stdout) out.push(stdout);
 		if (stderr) out.push(stderr);
