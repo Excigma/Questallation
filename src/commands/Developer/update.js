@@ -11,7 +11,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message) {
-		const { stdout, stderr } = await util.exec(`git fetch ssh://git@gitlab.com/ExcelledBot/ExcelledBot.git
+		const { stdout, stderr } = await util.exec(`git fetch git@github.com:Excigma/ExcigmaBot.git
 git reset --hard FETCH_HEAD
 git clean -df
 `, { timeout: 30000 });
