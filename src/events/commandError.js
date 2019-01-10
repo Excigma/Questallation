@@ -53,5 +53,4 @@ module.exports = class commandErrorEvent extends Event {
 		].random()
 			.replaceAll("ErrorText", `\`an unknown error\``)}\nIn other words, an error has occured. This has been reported to the developer.`);
 	}
-
 };
