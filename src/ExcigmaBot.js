@@ -44,11 +44,11 @@ new Client({
 	readyMessage: (client) => `${client.user.tag} ( ${production ? "Production" : "Development"} ), Ready to serve ${client.guilds.size} guilds and ${client.users.size} users`,
 	permissionLevels: new PermissionLevels()
 		.add(0, () => true)
-		.add(4, (client, msg) => msg.member && msg.member.permissions.has("MANGE_MESSAGES"), { fetch: true })
-		.add(5, (client, msg) => msg.member && msg.member.permissions.has("KICK_MEMBERS"), { fetch: true })
-		.add(6, (client, msg) => msg.member && msg.member.permissions.has("MANGE_SERVER"), { fetch: true })
-		.add(7, (client, msg) => msg.member && msg.member.permissions.has("BAN_MEMBERS"), { fetch: true })
-		.add(10, (client, msg) => msg.member.id === "321137772054183947", { fetch: true })
+		.add(4, (msg) => msg.member && msg.member.permissions.has("MANGE_MESSAGES"), { fetch: true })
+		.add(5, (msg) => msg.member && msg.member.permissions.has("KICK_MEMBERS"), { fetch: true })
+		.add(6, (msg) => msg.member && msg.member.permissions.has("MANGE_SERVER"), { fetch: true })
+		.add(7, (msg) => msg.member && msg.member.permissions.has("BAN_MEMBERS"), { fetch: true })
+		.add(10, (msg) => msg.member.id === "321137772054183947", { fetch: true })
 }).login(production ? process.env.TOKEN : process.env.PTB);
 
 process.on("SIGINT", () => {
