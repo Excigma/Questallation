@@ -39,7 +39,6 @@ module.exports = class extends Command {
             }
             display.run(await message.send("Getting definitions"))
         } catch (e) {
-            throw e
             return message.send("<a:ExcigmaCross:534470159604383744> | No such definition")
         }
     }

@@ -21,7 +21,7 @@ module.exports = class extends Command {
         const buffer = await canvas.getBufferAsync("image/png")
         message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
             .setTitle(isRandom ? `A random was generated ${tcolor.toName() || tcolor.toHexString()}` : `Your color of ${tcolor.toName()|| tcolor.toHexString()}`)
-            .setDescription(`**Hex:** ${tcolor.toHexString()}\n**RGB:** ${tcolor.toRgbString()}\n**RGB %:** ${tcolor.toPercentageRgbString()}\n**CMYK:** cmyk(${this.cmyk(tcolor.toRgb()).map(c => Math.round(c) + ", ")})\n**HSL:** ${tcolor.toHslString()}\n**HSV:** ${tcolor.toHsvString()}\n**Luminance:** ${(tcolor.getLuminance()*100).toString().substring(0, 5)}% Approx.`)
+            .setDescription(`**Hex:** ${tcolor.toHexString()}\n**RGB:** ${tcolor.toRgbString()}\n**RGB %:** ${tcolor.toPercentageRgbString()}\n**CMYK:** cmyk(${this.cmyk(tcolor.toRgb()).map(c => Math.round(c))})\n**HSL:** ${tcolor.toHslString()}\n**HSV:** ${tcolor.toHsvString()}\n**Luminance:** ${(tcolor.getLuminance()*100).toString().substring(0, 5)}% Approx.`)
             .attachFiles([new MessageAttachment(buffer, "color.png")])
             .setImage("attachment://color.png"));
     }
