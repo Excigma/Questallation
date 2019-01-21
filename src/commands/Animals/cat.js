@@ -1,26 +1,18 @@
-const { Command } = require("klasa");
-const fetch = require("node-fetch");
+const { AnimalCommand } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed } = require("discord.js");
 
-module.exports = class extends Command {
-	constructor(...args) {
-		super(...args, {
-			description: "Posts a random cat.",
-			aliases: ["kitty"],
-			extendedHelp: "This commands sends a random birb image from cataas.com."
-		});
-	}
+module.exports = class extends AnimalCommand {
+    constructor(...args) {
+        super(...args, {
+            aliases: ["meow", "kitty"],
+            description: "Sends a cute cat picture"
+        });
+    }
 
-	async run(message) {
-		try {
-			const body = await fetch("http://shibe.online/api/cats").then(res => res.json());
-			if (!body) return message.sendMessage("<:excigmabot_failure:490319592477032448> | There was an error, please try again later.");
-			message.sendEmbed(new MessageEmbed()
-				.setTitle("Cat")
-				.setImage(body[0]));
-		} catch (e) {
-			this.client.emit("error", e.stack);
-			message.sendMessage("<:excigmabot_failure:490319592477032448> | There was an error, please try again later.");
-		}
-	}
-};
+    async run(message) {
+        const body = await this.getPicture("http://aws.random.cat/meow").then(res => res.json());
+        message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
+            .setTitle("Cat")
+            .setImage(body.file));
+    }
+}

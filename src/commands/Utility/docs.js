@@ -1,116 +1,114 @@
-
 const { Command } = require("klasa");
-const { get } = require("snekfetch");
+const fetch = require("node-fetch")
 
 module.exports = class extends Command {
-	constructor(...args) {
-		super(...args, {
-			description: "Searches discord.js documentations.",
-			usage: "<query:str> [version:str]",
-			usageDelim: " ",
-		});
-		this.docs = {};
-	}
+        constructor(...args) {
+            super(...args, {
+                description: "Searches discord.js documentations.",
+                usage: "<query:str> [version:str]",
+                usageDelim: " ",
+            });
+            this.docs = {};
+        }
 
-	async fetchDocs(version) {
-		if (this.docs[version]) return this.docs[version];
+        async fetchDocs(version) {
+            if (this.docs[version]) return this.docs[version];
 
-		const link = version === "commando"
-			? "http://raw.githubusercontent.com/Gawdl3y/discord.js-commando/docs/master.json"
-			: `http://raw.githubusercontent.com/hydrabolt/discord.js/docs/${version}.json`;
+            const link = version === "commando" ?
+                "http://raw.githubusercontent.com/Gawdl3y/discord.js-commando/docs/master.json" :
+                `http://raw.githubusercontent.com/discordjs/discord.js/docs/${version}.json`;
 
-		const { text } = await get(link);
-		const json = JSON.parse(text);
+            const json = await fetch(link).then(res => res.json());
 
-		this.docs[version] = json;
-		return json;
-	}
+            this.docs[version] = json;
+            return json;
+        }
 
-	search(docs, query) {
-		query = query.split(/[#.]/);
-		const mainQuery = query[0].toLowerCase();
-		let memberQuery = query[1] ? query[1].toLowerCase() : null;
+        search(docs, query) {
+            query = query.split(/[#.]/);
+            const mainQuery = query[0].toLowerCase();
+            let memberQuery = query[1] ? query[1].toLowerCase() : null;
 
-		const findWithin = (parentItem, props, name) => {
-			let found = null;
-			for (const category of props) {
-				if (!parentItem[category]) continue;
-				const item = parentItem[category].find(i => i.name.toLowerCase() === name);
-				if (item) {
-					found = { item, category };
-					break;
-				}
-			}
+            const findWithin = (parentItem, props, name) => {
+                let found = null;
+                for (const category of props) {
+                    if (!parentItem[category]) continue;
+                    const item = parentItem[category].find(i => i.name.toLowerCase() === name);
+                    if (item) {
+                        found = { item, category };
+                        break;
+                    }
+                }
 
-			return found;
-		};
+                return found;
+            };
 
-		const main = findWithin(docs, ["classes", "interfaces", "typedefs"], mainQuery);
-		if (!main) return [];
+            const main = findWithin(docs, ["classes", "interfaces", "typedefs"], mainQuery);
+            if (!main) return [];
 
-		const res = [main];
-		if (!memberQuery) return res;
+            const res = [main];
+            if (!memberQuery) return res;
 
-		let props;
-		if (/\(.*?\)$/.test(memberQuery)) {
-			memberQuery = memberQuery.replace(/\(.*?\)$/, "");
-			props = ["methods"];
-		} else {
-			props = main.category === "typedefs" ? ["props"] : ["props", "methods", "events"];
-		}
+            let props;
+            if (/\(.*?\)$/.test(memberQuery)) {
+                memberQuery = memberQuery.replace(/\(.*?\)$/, "");
+                props = ["methods"];
+            } else {
+                props = main.category === "typedefs" ? ["props"] : ["props", "methods", "events"];
+            }
 
-		const member = findWithin(main.item, props, memberQuery);
-		if (!member) return [];
+            const member = findWithin(main.item, props, memberQuery);
+            if (!member) return [];
 
-		const rest = query.slice(2);
-		if (rest.length) {
-			if (!member.item.type) return [];
-			const base = this.joinType(member.item.type)
-				.replace(/<.+>/g, "")
-				.replace(/\|.+/, "")
-				.trim();
+            const rest = query.slice(2);
+            if (rest.length) {
+                if (!member.item.type) return [];
+                const base = this.joinType(member.item.type)
+                    .replace(/<.+>/g, "")
+                    .replace(/\|.+/, "")
+                    .trim();
 
-			return this.search(docs, `${base}.${rest.join(".")}`);
-		}
+                return this.search(docs, `${base}.${rest.join(".")}`);
+            }
 
-		res.push(member);
-		return res;
-	}
+            res.push(member);
+            return res;
+        }
 
-	clean(text) {
-		return text.replace(/\n/g, " ")
-			.replace(/<\/?(?:info|warn)>/g, "")
-			.replace(/\{@link (.+?)\}/g, "`$1`");
-	}
+        clean(text) {
+            return text.replace(/\n/g, " ")
+                .replace(/<\/?(?:info|warn)>/g, "")
+                .replace(/\{@link (.+?)\}/g, "`$1`");
+        }
 
-	joinType(type) {
-		return type.map(t => t.map(a => Array.isArray(a) ? a.join("") : a).join("")).join(" | ");
-	}
+        joinType(type) {
+            return type.map(t => t.map(a => Array.isArray(a) ? a.join("") : a).join("")).join(" | ");
+        }
 
-	getLink(version) {
-		return version === "commando"
-			? "http://discord.js.org/#/docs/commando/master/"
-			: `http://discord.js.org/#/docs/main/${version}/`;
-	}
+        getLink(version) {
+            return version === "commando" ?
+                "http://discord.js.org/#/docs/commando/master/" :
+                `http://discord.js.org/#/docs/main/${version}/`;
+        }
 
-	makeLink(main, member, version) {
-		return `${this.getLink(version)}${main.category === "classes" ? "class" : "typedef"}/${main.item.name}?scrollTo=${member.item.scope === "static" ? "s-" : ""}${member.item.name}`;
-	}
+        makeLink(main, member, version) {
+            return `${this.getLink(version)}${main.category === "classes" ? "class" : "typedef"}/${main.item.name}?scrollTo=${member.item.scope === "static" ? "s-" : ""}${member.item.name}`;
+        }
 
-	formatMain(main, version) {
-		const embed = {
-			description: `__**[${main.item.name}`,
-			fields: []
-		};
+        formatMain(main, version) {
+                const embed = {
+                    description: `__**[${main.item.name}`,
+                    fields: []
+                };
 
-		if (main.item.extends) embed.description += ` (extends ${main.item.extends[0]})`;
+                if (main.item.extends) embed.description += ` (extends ${main.item.extends[0]})`;
 
-		embed.description += `](${this.getLink(version)}${main.category === "classes" ? "class" : "typedef"}/${main.item.name})**__`;
+                embed.description += `](${this.getLink(version)}${main.category === "classes" ? "class" : "typedef"}/${main.item.name})**__`;
 
-		embed.description += "\n";
-		if (main.item.description) embed.description += `\n${this.clean(main.item.description)}`;
+                embed.description += "\n";
+                if (main.item.description) embed.description += `\n${this.clean(main.item.description)}`;
 
-		const join = it => `\`${it.map(i => i.name).join("` `")}\``;
+                const join = it => `\`${it.map(i => i.name).join("` `")}\``;
 
 		if (main.item.props) {
 			embed.fields.push({
@@ -242,7 +240,7 @@ module.exports = class extends Command {
 		const [main, member] = this.search(docs, query);
 
 		if (!main) {
-			return message.sendMessage("<:excigmabot_failure:490319592477032448> | Could not find that item in the docs.");
+			return message.sendMessage("<a:ExcigmaCross:534470159604383744> | Could not find that item in the docs.");
 		}
 
 		const embed = member ? {
@@ -257,7 +255,7 @@ module.exports = class extends Command {
 			icon_url: icon
 		};
 		embed.color = 0x7289DA;
-		return message.send({ embed: embed });
+		return message.sendEmbed(embed);
 	}
 
 };

@@ -1,27 +1,17 @@
-const { Command } = require("klasa");
-const fetch = require("node-fetch");
+const { AnimalCommand } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed } = require("discord.js");
 
-module.exports = class extends Command {
-	constructor(...args) {
-		super(...args, {
-			description: "Posts a random owl.",
-			extendedHelp: "This commands sends a random birb image from pics.floofybot.moe/owl."
-		});
-	}
+module.exports = class extends AnimalCommand {
+    constructor(...args) {
+        super(...args, {
+            description: "Sends a cute owl picture"
+        });
+    }
 
-	async run(message) {
-		
-		try {
-			const body = await fetch("http://pics.floofybot.moe/owl").then(res => res.json());
-			if (!body) return message.sendMessage("<:excigmabot_failure:490319592477032448> | There was an error, please try again later.");
-			body.image.replaceAll(".gifv", "gif");
-			message.sendEmbed(new MessageEmbed()
-				.setTitle("Owl")
-				.setImage(body.image));
-		} catch (e) {
-			this.client.emit("error", e.stack);
-			message.sendMessage("<:excigmabot_failure:490319592477032448> | There was an error, please try again later.");
-		}
-	}
-};
+    async run(message) {
+        const body = await this.getPicture("http://pics.floofybot.moe/owl").then(res => res.json());;
+        message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
+            .setTitle("Owl")
+            .setImage(body.image.replace(".gifv", ".gif")));
+    }
+}

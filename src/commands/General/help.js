@@ -6,28 +6,28 @@ const time = 1000 * 60 * 3;
 
 module.exports = class extends Command {
 
-	constructor(...args) {
-		super(...args, {
-			guarded: true,
-			description: "Displays help for a specific command, or show a full command list",
-			usage: "(Command:command)",
-			extendedHelp: ["", "ping"]
-		});
+        constructor(...args) {
+            super(...args, {
+                guarded: true,
+                description: "Displays help for a specific command, or show a full command list",
+                usage: "(Command:command)",
+                extendedHelp: ["", "ping"]
+            });
 
-		this.createCustomResolver("command", (arg, possible, message) => {
-			if (!arg || arg === "") return undefined;
-			return this.client.arguments.get("command").run(arg, possible, message);
-		});
+            this.createCustomResolver("command", (arg, possible, message) => {
+                if (!arg || arg === "") return undefined;
+                return this.client.arguments.get("command").run(arg, possible, message);
+            });
 
-		// Cache the handlers
-		this.handlers = new Map();
-	}
+            // Cache the handlers
+            this.handlers = new Map();
+        }
 
-	async run(message, [command]) {
-		if (command) {
-			return message.sendEmbed(new MessageEmbed()
-				.setTitle(`Help: ${command.name}`)
-				.setDescription(`**Description:**
+        async run(message, [command]) {
+                if (command) {
+                    return message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
+                            .setTitle(`Help: ${command.name}`)
+                            .setDescription(`**Description:**
 ${isFunction(command.description) ? command.description(message.language) : command.description}
 **Usage:**
 ${command.usage.fullUsage(message)}
@@ -51,8 +51,8 @@ ${typeof command.extendedHelp == "object" ? command.extendedHelp.map(example => 
 
 		const method = this.client.user.bot ? "author" : "channel";
 		return message[method].send(await this.buildHelp(message) + "\nOr check online for the commands: https://excigmabot.glitch.me/commands", { split: { char: "\n" } })
-			.then(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<:excigmabot_success:490319592615575553> | The list of commands you have access to has been sent to your DMs."); })
-			.catch(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<:excigmabot_failure:490319592477032448> | You have DMs disabled, I couldn't send you the commands in DMs.\nYou can check online for our commands here though: https://excigmabot.glitch.me/commands"); });
+			.then(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaTick:534470159465971722> | The list of commands you have access to has been sent to your DMs."); })
+			.catch(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaCross:534470159604383744> | You have DMs disabled, I couldn't send you the commands in DMs.\nYou can check online for our commands here though: https://excigmabot.glitch.me/commands"); });
 	}
 
 	async buildHelp(message) {
@@ -68,7 +68,7 @@ ${typeof command.extendedHelp == "object" ? command.extendedHelp.map(example => 
 		const commands = await this._fetchCommands(message);
 		const display = new RichDisplay();
 		for (const [category, list] of commands) {
-			display.addPage(new MessageEmbed()
+			display.addPage(new MessageEmbed(message.excigmaEmbed)
 				.setAuthor(message.author.username + ",", message.author.displayAvatarURL())
 				.setColor(0x7289DA)
 				.setTitle(`${category} Commands`)

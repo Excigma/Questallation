@@ -1,27 +1,44 @@
 const { Command } = require("klasa");
 const { MessageAttachment, MessageEmbed } = require("discord.js");
 const Jimp = require("jimp");
+const tinycolor = require("tinycolor2")
 
 module.exports = class extends Command {
+    constructor(...args) {
+        super(...args, {
+            requiredPermissions: ["ATTACH_FILES", "EMBED_LINKS"],
+            aliases: ["colour"],
+            description: "Sends info about a hex color, or generates a random color.",
+            extendedHelp: ["", "#7289DA"],
+            usage: "[Color:str{,50}]"
+        });
+    }
 
-	constructor(...args) {
-		super(...args, {
-			requiredPermissions: ["ATTACH_FILES", "EMBED_LINKS"],
-			aliases: ["colour"],
-			description: "Sends info about a hex color, or generates a random color.",
-			extendedHelp: ["", "#7289DA"],
-			usage: "[Hex:str{7,7}]"
-		});
-	}
+    async run(message, [color]) {
+        const isRandom = !tinycolor(color).isValid()
+        const tcolor = await tinycolor(color).isValid() ? await tinycolor(color) : await tinycolor.random()
+        const canvas = await new Jimp(200, 50, tcolor.toHexString());
+        const buffer = await canvas.getBufferAsync("image/png")
+        message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
+            .setTitle(isRandom ? `A random was generated ${tcolor.toName() || tcolor.toHexString()}` : `Your color of ${tcolor.toName()|| tcolor.toHexString()}`)
+            .setDescription(`**Hex:** ${tcolor.toHexString()}\n**RGB:** ${tcolor.toRgbString()}\n**RGB %:** ${tcolor.toPercentageRgbString()}\n**CMYK:** cmyk(${this.cmyk(tcolor.toRgb()).map(c => Math.round(c) + ", ")})\n**HSL:** ${tcolor.toHslString()}\n**HSV:** ${tcolor.toHsvString()}\n**Luminance:** ${(tcolor.getLuminance()*100).toString().substring(0, 5)}% Approx.`)
+            .attachFiles([new MessageAttachment(buffer, "color.png")])
+            .setImage("attachment://color.png"));
+    }
 
-	async run(message, [hex = "#" + Math.floor(Math.random() * 16777215).toString(16)]) {
-		const canvas = await new Jimp(64, 64, Jimp.cssColorToHex(hex));
-		const rgb = Jimp.intToRGBA(Jimp.cssColorToHex(hex));
-		canvas.getBuffer("image/png", async function(err, buffer) {
-			message.sendEmbed(new MessageEmbed()
-				.setDescription(`Your HEX code was \`${hex}\`, and the RGB is \`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})\``)
-				.attachFiles([new MessageAttachment(buffer, "color.png")])
-				.setThumbnail("attachment://color.png"), "Here you go!");
-		});
-	}
+    cmyk(rgb) {
+        var r = rgb.r / 255;
+        var g = rgb.g / 255;
+        var b = rgb.b / 255;
+        var c;
+        var m;
+        var y;
+        var k;
+
+        k = Math.min(1 - r, 1 - g, 1 - b);
+        c = (1 - r - k) / (1 - k) || 0;
+        m = (1 - g - k) / (1 - k) || 0;
+        y = (1 - b - k) / (1 - k) || 0;
+        return [c * 100, m * 100, y * 100, k * 100];
+    };
 };

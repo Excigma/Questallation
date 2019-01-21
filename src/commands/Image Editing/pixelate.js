@@ -1,8 +1,8 @@
-const { Command } = require('klasa');
-const { MessageAttachment } = require('discord.js')
+const { CanvasCommand } = require(`${process.cwd()}/src/index`);
+
 const Jimp = require('jimp')
 
-module.exports = class extends Command {
+module.exports = class extends CanvasCommand {
     constructor(...args) {
         super(...args, {
             description: 'Pixelate',
@@ -18,8 +18,6 @@ module.exports = class extends Command {
         value = value * 2
         const avatar = await Jimp.read(user.displayAvatarURL({ format: 'png', size: 512 }))
         avatar.pixelate(value)
-        avatar.getBuffer('image/png', async function (err, buffer) {
-            message.sendMessage({ files: [new MessageAttachment(buffer, 'image.png')] })
-        })
+        this.sendCanvas(message, avatar);
     }
 };

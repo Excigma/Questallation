@@ -4,15 +4,15 @@ const os = require("os");
 
 module.exports = class extends Command {
 
-	constructor(...args) {
-		super(...args, {
-			guarded: true,
-			description: language => language.get("COMMAND_STATS_DESCRIPTION")
-		});
-	}
+        constructor(...args) {
+            super(...args, {
+                guarded: true,
+                description: language => language.get("COMMAND_STATS_DESCRIPTION")
+            });
+        }
 
-	async run(message) {
-		message.send(`
+        async run(message) {
+                message.send(`
 =  Bot infomation =
 	User Count       :: ${this.client.guilds.reduce((p, c) => p + c.memberCount, 0).toLocaleString() + " users"}
 	Bots Count       :: ${this.client.users.filter(user => user.bot).size.toLocaleString()} bots.
@@ -20,7 +20,9 @@ module.exports = class extends Command {
 	Custom emojis    :: ${this.client.emojis.size.toLocaleString()} emojis
 	Channel Count    :: ${this.client.channels.size.toLocaleString()} channels
 	Commands         :: ${this.client.commands.size} commands
-	Heartrate ping   :: ${Math.round(this.client.ping)} ms
+	Heartrate ping   :: ${Math.round(this.client.ws.ping)} ms
+
+${"extended" in message.flags ? `
 =  Process Statistics =
 	DiscordJS ver    :: v${discordVersion}
 	Klasa ver        :: v${klasaVersion}
@@ -31,6 +33,6 @@ module.exports = class extends Command {
 	OS Uptime        :: ${Duration.toNow(Date.now() - (os.uptime() * 1000))}
 	Memory Usage     :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 	Memory Heap      :: ${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)} MB
-	Total memory     :: ${(os.totalmem() / Math.pow(1024, 3)).toLocaleString()} Gigabytes`, { code: "asciidoc" });
-	}
+	Total memory     :: ${(os.totalmem() / Math.pow(1024, 3)).toLocaleString()} Gigabytes` : "= Type --extended for more ="}`, { code: "asciidoc" });
+    }
 };

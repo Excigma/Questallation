@@ -1,25 +1,22 @@
-const { Command } = require('klasa');
-const { MessageAttachment } = require('discord.js')
-const Jimp = require('jimp')
+const { CanvasCommand } = require(`${process.cwd()}/src/index`);
+const Jimp = require("jimp");
 
-module.exports = class extends Command {
+module.exports = class extends CanvasCommand {
     constructor(...args) {
         super(...args, {
-            description: 'Contrast ',
-            extendedHelp: 'A contrast filter.',
-            usage: '[User:user] [Value:integer{0,10}]',
-            usageDelim: ' ',
+            description: "Blurs a user's profile picture",
+            extendedHelp: ["", "@Excigma#0321"],
+            usage: "[User:user] [Value:integer{0,10}]",
+            usageDelim: " ",
             cooldown: 10
         });
     }
 
     async run(message, [user = message.author, value = 10]) {
-        user = await this.client.users.fetch(user.id)
+        user = await this.client.users.fetch(user.id);
 
-        const avatar = await Jimp.read(user.displayAvatarURL({ format: 'png', size: 512 }))
-        avatar.blur(value)
-        avatar.getBuffer('image/png', async function (err, buffer) {
-            message.sendMessage({ files: [new MessageAttachment(buffer, 'image.png')] })
-        })
+        const avatar = await Jimp.read(user.displayAvatarURL({ format: "png", size: 512 }));
+        avatar.blur(value);
+        this.sendCanvas(message, avatar);
     }
 };
