@@ -1,6 +1,5 @@
-const { Command } = require(`${process.cwd()}/src/index`);
+const { Command, MessageEmbed } = require(`${process.cwd()}/src/index`);
 const fetch = require("node-fetch");
-const { MessageEmbed } = require("discord.js");
 
 module.exports = class extends Command {
 

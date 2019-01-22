@@ -1,5 +1,4 @@
-const { AnimalCommand } = require(`${process.cwd()}/src/index`);
-const { MessageEmbed } = require("discord.js");
+const { AnimalCommand, MessageEmbed } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends AnimalCommand {
     constructor(...args) {
