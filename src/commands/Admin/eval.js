@@ -1,4 +1,4 @@
-const { Command, Stopwatch, Type, util } = require("klasa");
+const { Command, Stopwatch, Type, util } = require(`${process.cwd()}/src/index`);
 const { inspect } = require("util");
 
 module.exports = class extends Command {
@@ -44,6 +44,7 @@ module.exports = class extends Command {
 
     // Eval the input
     async eval(message, code) {
+        const Discord require("discord.js")
         const stopwatch = new Stopwatch();
         let success, syncTime, asyncTime, result;
         let thenable = false;

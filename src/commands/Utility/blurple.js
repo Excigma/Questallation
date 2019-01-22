@@ -1,4 +1,4 @@
-const { Command, Stopwatch } = require("klasa");
+const { Command, Stopwatch } = require(`${process.cwd()}/src/index`);
 const Discord = require("discord.js");
 const Jimp = require("jimp");
 

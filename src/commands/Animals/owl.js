@@ -9,7 +9,7 @@ module.exports = class extends AnimalCommand {
     }
 
     async run(message) {
-        const body = await this.getPicture("http://pics.floofybot.moe/owl").then(res => res.json());;
+        const body = await this.getPicture("http://pics.floofybot.moe/owl").then(res => res.json());
         message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
             .setTitle("Owl")
             .setImage(body.image.replace(".gifv", ".gif")));

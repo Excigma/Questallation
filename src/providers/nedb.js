@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 dirigeants. All rights reserved. MIT license.
-const { Provider, util: { mergeObjects, isObject } } = require("klasa");
+const { Provider, util: { mergeObjects, isObject } } = require(`${process.cwd()}/src/index`);
 const { Collection } = require("discord.js");
 const { resolve } = require("path");
 const fs = require("fs-nextra");

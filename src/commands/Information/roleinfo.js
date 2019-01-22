@@ -1,4 +1,4 @@
-const { Command, Timestamp, Duration, RichDisplay } = require("klasa");
+const { Command, Timestamp, Duration, RichDisplay } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed } = require("discord.js");
 module.exports = class extends Command {
 

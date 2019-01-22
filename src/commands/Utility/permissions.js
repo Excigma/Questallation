@@ -1,4 +1,4 @@
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 const { convertPerms } = require(`${process.cwd()}/src/lib/permissions.js`);
 const { MessageEmbed } = require("discord.js");
 

@@ -1,4 +1,4 @@
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 const { MessageAttachment, MessageEmbed } = require("discord.js");
 const Jimp = require("jimp");
 const tinycolor = require("tinycolor2")

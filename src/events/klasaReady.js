@@ -1,4 +1,4 @@
-const { config: mathConfig } = require("mathjs"), { Event, version: klasaVersion, Duration } = require("klasa");
+const { config: mathConfig } = require("mathjs"), { Event, version: klasaVersion, Duration } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Event {
     constructor(...args) {

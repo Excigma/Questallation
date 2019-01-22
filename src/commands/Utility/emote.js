@@ -1,4 +1,4 @@
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 const basename = require(`${process.cwd()}/src/lib/twemoji-basename.js`);
 const twemojiList = require(`${process.cwd()}/src/lib/twemoji.json`);
 const emoteList = require(`${process.cwd()}/src/lib/emojis.json`);

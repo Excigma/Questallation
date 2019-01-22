@@ -1,4 +1,4 @@
-const { Command, version: klasaVersion, Duration } = require("klasa");
+const { Command, version: klasaVersion, Duration } = require(`${process.cwd()}/src/index`);
 const { version: discordVersion } = require("discord.js");
 const os = require("os");
 

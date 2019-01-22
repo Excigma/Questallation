@@ -1,6 +1,5 @@
 const { Command } = require("klasa");
 const fetch = require("node-fetch");
-const { MessageEmbed } = require("discord.js");
 
 class AnimalCommand extends Command {
     constructor(...args) {

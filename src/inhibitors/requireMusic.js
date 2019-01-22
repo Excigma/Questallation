@@ -1,4 +1,4 @@
-const { Inhibitor } = require("klasa");
+const { Inhibitor } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Inhibitor {
 

@@ -1,4 +1,4 @@
-const { Command, Timestamp, Duration, RichDisplay } = require("klasa");
+const { Command, Timestamp, Duration, RichDisplay } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed, MessageAttachment } = require("discord.js");
 const Jimp = require("jimp")
 

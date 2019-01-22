@@ -1,10 +1,5 @@
 const { Command } = require('klasa');
 
-const converter = (string) => {
-    var cancer = []
-    string.split('').forEach(c => cancer.push([c, c.toUpperCase()].random()))
-    return cancer.join('')
-};
 
 module.exports = class extends Command {
     constructor(...args) {
@@ -16,15 +11,11 @@ module.exports = class extends Command {
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: 'Cancercase',
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: converter(str)
-        })
-
+        let cancer = ""
+        const splitStr = str.split("")
+        for (const char of splitStr) {
+            cancer += [char.toLowerCase(), char.toUpperCase()].random()
+        }
+        return this.sendText(message, cancer);
     }
 };

@@ -1,4 +1,4 @@
-const { Command, util } = require("klasa");
+const { Command, util } = require(`${process.cwd()}/src/index`);
 const fetch = require("node-fetch");
 
 module.exports = class extends Command {

@@ -1,5 +1,5 @@
 var asciify = require("asciify-image");
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {

@@ -1,4 +1,4 @@
-const { Event } = require("klasa");
+const { Event } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed, Util } = require("discord.js");
 
 module.exports = class commandErrorEvent extends Event {

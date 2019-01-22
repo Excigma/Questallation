@@ -1,4 +1,4 @@
-const { Command, RichDisplay } = require("klasa");
+const { Command, RichDisplay } = require(`${process.cwd()}/src/index`);
 const fetch = require("node-fetch")
 const { MessageEmbed } = require("discord.js");
 

@@ -1,4 +1,4 @@
-const { Argument } = require("klasa");
+const { Argument } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Argument {
     run(arg, possible, msg) {

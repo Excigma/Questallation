@@ -1,4 +1,4 @@
-const { Command, util } = require("klasa");
+const { Command, util } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Command {
     constructor(...args) {

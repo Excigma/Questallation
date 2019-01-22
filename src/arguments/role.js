@@ -1,4 +1,4 @@
-const { Argument } = require("klasa");
+const { Argument } = require(`${process.cwd()}/src/index`);
 const lev = require("js-levenshtein")
 module.exports = class extends Argument {
 

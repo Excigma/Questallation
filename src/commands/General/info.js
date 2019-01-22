@@ -1,4 +1,4 @@
-const { Command, version: klasaVersion } = require("klasa");
+const { Command, version: klasaVersion } = require(`${process.cwd()}/src/index`);
 const { version: discordVersion } = require("discord.js");
 module.exports = class extends Command {
 

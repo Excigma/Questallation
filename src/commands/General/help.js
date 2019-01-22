@@ -1,4 +1,4 @@
-const { Command, RichDisplay, util: { isFunction } } = require("klasa");
+const { Command, RichDisplay, util: { isFunction } } = require(`${process.cwd()}/src/index`);
 const { MessageEmbed, Permissions } = require("discord.js");
 
 const PERMISSIONS_RICHDISPLAY = new Permissions([Permissions.FLAGS.MANAGE_MESSAGES, Permissions.FLAGS.ADD_REACTIONS]);
