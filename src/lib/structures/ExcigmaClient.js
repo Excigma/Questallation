@@ -1,5 +1,5 @@
-const { Client, PermissionLevels } = require("klasa");
-const production = process.env.NODE_ENV === "production"
+const { Client, PermissionLevels, Schema } = require("klasa");
+const production = process.env.NODE_ENV === "production";
 
 module.exports = class extends Client {
     constructor(options = {
@@ -18,7 +18,6 @@ module.exports = class extends Client {
         },
         console: production ? { useColor: false, utc: true } : { useColor: true, utc: true },
         presence: production ? { activity: { name: "for ebhelp", type: "WATCHING" } } : { activity: { name: "for edhelp", type: "WATCHING" } },
-        providers: { default: 'nedb' },
         pieceDefaults: {
             commands: {
                 promptLimit: 1,
@@ -44,8 +43,8 @@ module.exports = class extends Client {
             .add(10, (msg) => msg.member.id === "321137772054183947", { fetch: true })
     }) {
         super(options);
-        this.tick = "<a:ExcigmaTick:534470159465971722> |"
-        this.cross = "<a:ExcigmaCross:534470159604383744> |"
-        this.production = production
+        this.tick = "<a:ExcigmaTick:534470159465971722> |";
+        this.cross = "<a:ExcigmaCross:534470159604383744> |";
+        this.production = production;
     }
 };
