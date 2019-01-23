@@ -90,7 +90,6 @@ module.exports = class extends Provider {
     count(table, query = {}) {
         return this.dataStores.get(table).countAsync(resolveQuery(query));
     }
-
 };
 
 const resolveQuery = query => isObject(query) ? query : { id: query };
