@@ -1,17 +1,16 @@
 // Copyright (c) 2017-2018 dirigeants. All rights reserved. MIT license.
-const { Provider, util: { mergeObjects, isObject } } = require(`${process.cwd()}/src/index`);
-const { Collection } = require("discord.js");
-const { resolve } = require("path");
-const fs = require("fs-nextra");
+const { Provider, util: { mergeObjects, isObject } } = require('klasa');
+const { Collection } = require('discord.js');
+const { resolve } = require('path');
+const fs = require('fs-nextra');
 
-const Datastore = require("nedb-core");
+const Datastore = require('nedb-core');
 require(`${process.cwd()}/src/lib/promisifyAll`)(Datastore.prototype);
-
 module.exports = class extends Provider {
 
     constructor(...args) {
         super(...args);
-        this.baseDir = resolve(this.client.userBaseDirectory, "bwd", "provider", "nedb");
+        this.baseDir = resolve(this.client.userBaseDirectory, 'bwd', 'provider', 'nedb');
         this.dataStores = new Collection();
     }
 

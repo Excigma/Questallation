@@ -5,7 +5,7 @@ module.exports = class extends Command {
 
     constructor(...args) {
         super(...args, {
-            description: "Ew I stepped in that",
+            description: "They're wanted",
             usage: "[User:User]",
             extendedHelp: ["@Excigma#0321"]
         });

@@ -1,5 +1,10 @@
-const { Command, Stopwatch, Type, util } = require(`${process.cwd()}/src/index`);
+const { Command, Stopwatch, Type, klasaUtil: util } = require(`${process.cwd()}/src/index`);
 const { inspect } = require("util");
+
+
+const Discord = require("discord.js")
+const fetch = require("node-fetch")
+const klasa = require("klasa")
 
 module.exports = class extends Command {
 
@@ -44,7 +49,6 @@ module.exports = class extends Command {
 
     // Eval the input
     async eval(message, code) {
-        const Discord require("discord.js")
         const stopwatch = new Stopwatch();
         let success, syncTime, asyncTime, result;
         let thenable = false;

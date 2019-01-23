@@ -5,7 +5,7 @@ const binary = (string) => {
     }).join(" ");
 };
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             description: "Makes binary from words.",
