@@ -23,7 +23,8 @@ module.exports = class extends Command {
             "Update! But I think you missed a )",
             "I'm getting upgraded Oo",
             "Oh finally, an update"
-        ].random())
+        ].random());
+
         const { stdout, stderr } = await util.exec(`git fetch git@github.com:Excigma/ExcigmaBot.git
 git reset --hard FETCH_HEAD
 git clean -df
