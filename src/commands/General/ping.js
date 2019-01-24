@@ -3,8 +3,7 @@ const { Command } = require(`${process.cwd()}/src/index`);
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
-            description: "Checks bot to discord connection speed.",
-            extendedHelp: ""
+            description: "Checks bot to discord connection speed."
         });
     }
 

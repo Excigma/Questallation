@@ -1,4 +1,4 @@
-const { Command, util: { exec, codeBlock } } = require(`${process.cwd()}/src/index`);
+const { Command, klasaUtil: { exec, codeBlock } } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Command {
 
@@ -20,5 +20,4 @@ module.exports = class extends Command {
 
         return message.sendMessage([output, outerr].join("\n"));
     }
-
 };

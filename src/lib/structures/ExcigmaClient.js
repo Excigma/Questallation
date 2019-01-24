@@ -3,6 +3,23 @@ const production = process.env.NODE_ENV === "production";
 
 module.exports = class extends Client {
     constructor(options = {
+        gateways: {
+            guilds: {
+                schema: Client.defaultGuildSchema
+                    .add("levelUp", "boolean", { default: false })
+            },
+            users: {
+                schema: new Schema()
+                    .add("experience", "Integer", {
+                        default: 0,
+                        configurable: false
+                    })
+                    .add("level", "Integer", {
+                        default: 0,
+                        configurable: false
+                    })
+            }
+        },
         production: production,
         disabledEvents: ["CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START", "VOICE_SERVER_UPDATE", "VOICE_STATE_UPDATE"],
         prefix: production ? "eb" : "ed",
