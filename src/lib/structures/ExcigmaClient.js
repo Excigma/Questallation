@@ -20,8 +20,15 @@ module.exports = class extends Client {
                     })
             }
         },
+        schedule: {
+            interval: 5000
+        },
+        prefixCaseInsensitive: true,
+        createPiecesFolders: false,
+        typing: true,
+        retryLimit: 5,
         production: production,
-        disabledEvents: ["CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START", "VOICE_SERVER_UPDATE", "VOICE_STATE_UPDATE"],
+        disabledEvents: ["CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"],
         prefix: production ? "eb" : "ed",
         regexPrefix: production ? /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:bot)?|b)[,!]? ?/i : /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:dev)?|d)[,!]? ?/i,
         noPrefixDM: true,
