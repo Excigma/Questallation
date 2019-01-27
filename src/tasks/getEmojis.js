@@ -14,6 +14,6 @@ module.exports = class extends Task {
                 url: entry.image
             };
         }
-        writeJSONAtomic(`${process.cwd()}/src/modules/emojis.json`, emojis);
+        writeJSONAtomic(`${process.cwd()}/src/lib/emojis.json`, emojis);
     }
 };

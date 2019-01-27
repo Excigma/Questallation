@@ -5,7 +5,6 @@ const PERMISSIONS_RICHDISPLAY = new Permissions([Permissions.FLAGS.MANAGE_MESSAG
 const time = 1000 * 60 * 3;
 
 module.exports = class extends Command {
-
         constructor(...args) {
             super(...args, {
                 guarded: true,

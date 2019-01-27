@@ -23,12 +23,12 @@ module.exports = class extends Command {
 		if (typeof chunks === "object") {
 			for (const chunk of chunks) {
 				display.addPage(new MessageEmbed(message.excigmaEmbed)
-					.setDescription(`You are placing ${data.indexOf(message.author) + 1}\n${chunk}`));
+					.setDescription(`You are placing ${data.findIndex(user => user.id === message.author.id) + 1}\n${chunk}`));
 			}
 			return display.run(await message.send("Loading data..."));
 		} else {
 			return message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
-				.setDescription(`You are placing ${data.indexOf(message.author) + 1}\n${chunks}`));
+				.setDescription(`You are placing ${data.findIndex(user => user.id === message.author.id) + 1}\n${chunks}`));
 		}
 	}
 };
