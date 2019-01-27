@@ -17,7 +17,7 @@ module.exports = class extends Command {
 			.sort((a, b) => b.settings.experience - a.settings.experience).array();
 		const sorted = data.map((user, place) => `(${place + 1}) ${user.tag}: ${user.settings.experience}`).join("\n");
 		console.log(data);
-		const chunks = Util.splitMessage(sorted, { char: "\n", maxLength: 100 });
+		const chunks = Util.splitMessage(sorted, { char: "\n", maxLength: 250 });
 
 
 		if (typeof chunks === "object") {
