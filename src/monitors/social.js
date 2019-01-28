@@ -23,7 +23,7 @@ module.exports = class extends Monitor {
 
         await message.author.settings.update([["experience", nextValue], ["level", nextLevel]]);
         if (currentLevel !== nextLevel && message.guild.settings.levelUp) {
-            await message.send(`Congratulations! ${message.author.tag}, You leveled up to level **${currentLevel}**!`);
+            await message.send(`Congratulations! ${message.author.tag}, You leveled up to level **${currentLevel + 1}**!`);
         }
     }
 };

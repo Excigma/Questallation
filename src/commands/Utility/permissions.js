@@ -15,17 +15,22 @@ module.exports = class extends Command {
 
     async run(message, [member = message.member]) {
         const perms = convertPerms(member.permissions.bitfield);
-        let permlist = "```diff\n";
+        let has = "```diff\n";
+        let nohas = "```diff\n";
         for (const perm in perms) {
-            permlist += `${perms[perm] ? "+ Has" : "- Doesn't have"} ${perm}\n`;
+            if (perms[perm]) has += `+${perm}\n`;
+            else nohas += `-${perm}\n`;
+
             if (perm == "Administrator" && perms[perm]) {
-                permlist = "```diff\n+ All (has Administrator perm)";
+                nohas = "```​";
+                has = "```diff\n+ All (has Administrator perm)";
                 break;
             }
         }
-        permlist += "\n```";
-        message.sendEmbed(new MessageEmbed()
+        has += "\n```";
+        nohas += "\n```";
+        message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
             .setTitle(`Permissions for ${member.user.tag}`)
-            .setDescription(permlist));
+            .setDescription(`Has permissions:${has}\nDoes not have:${nohas}`));
     }
 };
