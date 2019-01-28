@@ -25,7 +25,7 @@ module.exports = class extends Command {
         });
 
         await webhook.delete();
-        return msg.delete().catch(e => {});
+        return msg.delete().catch();
     }
 
 };
