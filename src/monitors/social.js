@@ -10,20 +10,26 @@ module.exports = class extends Monitor {
 
     async run(message) {
         if (!message.guild) return;
-        if (!pointCooldown.get(message.author.id)) {
-            pointCooldown.set(message.author.id, Date.now());
+
+        if (!pointCooldown.get(message.author.id + message.guild.id)) {
+            pointCooldown.set(message.author.id + message.guild.id, Date.now());
         } else {
-            if (Date.now() - 60000 < pointCooldown.get(message.author.id)) return;
-            pointCooldown.delete(message.author.id);
+            if (Date.now() - 60000 < pointCooldown.get(message.author.id + message.guild.id)) return;
+            pointCooldown.delete(message.author.id + message.guild.id);
         }
 
-        const nextValue = message.author.settings.experience + 10;
-        const currentLevel = message.author.settings.level;
-        const nextLevel = Math.floor(0.1 * Math.sqrt(nextValue + 10));
 
-        await message.author.settings.update([["experience", nextValue], ["level", nextLevel]]);
-        if (currentLevel !== nextLevel && message.guild.settings.levelUp) {
-            await message.send(`Congratulations! ${message.author.tag}, You leveled up to level **${currentLevel + 1}**!`);
+        const unextValue = message.author.settings.experience + 10;
+        const unextLevel = Math.floor(0.1 * Math.sqrt(unextValue + 10));
+        await message.author.settings.update([["experience", unextValue], ["level", unextLevel]]);
+
+        const mnextValue = message.member.settings.experience + 10;
+        const mcurrentLevel = message.member.settings.level;
+        const mnextLevel = Math.floor(0.1 * Math.sqrt(mnextValue + 10));
+
+        await message.member.settings.update([["experience", mnextValue], ["level", mnextLevel]]);
+        if (mcurrentLevel !== mnextLevel && message.guild.settings.levelUp) {
+            await message.send(`Congratulations! ${message.author.tag}, You leveled up to level **${mcurrentLevel + 1}**!`);
         }
     }
 };

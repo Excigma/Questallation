@@ -8,8 +8,20 @@ module.exports = class extends Client {
                 schema: Client.defaultGuildSchema
                     .add("levelUp", "boolean", { default: false })
             },
+            members: {
+                schema: new Schema()
+                    .add("experience", "Integer", {
+                        default: 0,
+                        configurable: false
+                    })
+                    .add("level", "Integer", {
+                        default: 0,
+                        configurable: false
+                    })
+            },
             users: {
                 schema: new Schema()
+                    .add("TODOs", "any", { array: true })
                     .add("experience", "Integer", {
                         default: 0,
                         configurable: false

@@ -9,6 +9,6 @@ module.exports = class extends Route {
 		const { folder, name } = request.params;
 		if (!fs.existsSync(`${process.cwd()}/src/assets/${folder}`)) return response.end(`Cannot get ${folder}`);
 		if (!fs.existsSync(`${process.cwd()}/src/assets/${folder}/${name}`)) return response.end(`Cannot get ${folder}/${name}`);
-		return response.end(fs.readFileSync(`${process.cwd()}/src/assets/${folder}/${name}`));
+		return response.send(fs.readFileSync(`${process.cwd()}/src/assets/${folder}/${name}`));
 	}
 };
