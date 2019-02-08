@@ -14,4 +14,4 @@ module.exports = class extends AnimalCommand {
             .setTitle("Bunny")
             .setImage(body.media.poster));
     }
-}
+};

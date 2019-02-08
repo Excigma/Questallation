@@ -28,9 +28,9 @@ module.exports = class extends Command {
         canvas.composite(avatar1, 0, 0).composite(overlay, 100, 0).composite(avatar2, 200, 0);
 
 
-        canvas.getBuffer("image/png", async(err, buffer) => {
+        canvas.getBuffer("image/png", async (err, buffer) => {
             message.sendEmbed(new MessageEmbed()
-                .setAuthor(message.author.username + ",", message.author.displayAvatarURL())
+                .setAuthor(`${message.author.username},`, message.author.displayAvatarURL())
                 .setColor(0x7289DA)
                 .setTitle(`${user1.tag} X ${user2.tag}`)
                 .attachFiles([new MessageAttachment(buffer, "ship.png")])

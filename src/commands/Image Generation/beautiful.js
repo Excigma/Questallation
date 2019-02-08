@@ -23,7 +23,7 @@ module.exports = class extends Command {
 
         canvas.composite(avatar, 415, 40).composite(avatar, 415, 375).composite(overlay, 0, 0);
 
-        canvas.getBuffer("image/png", async(err, buffer) => {
+        canvas.getBuffer("image/png", async (err, buffer) => {
             message.sendEmbed(new MessageEmbed()
                 .setTitle("This... is beautiful")
                 .attachFiles([new MessageAttachment(buffer, "beautiful.png")])

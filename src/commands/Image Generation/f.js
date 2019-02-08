@@ -21,7 +21,7 @@ module.exports = class extends CanvasCommand {
 
         avatar.scaleToFit(90, 90);
         canvas.composite(avatar, 110, 45).composite(overlay, 0, 0);
-        const msg = await this.sendCanvas(message, canvas)
+        const msg = await this.sendCanvas(message, canvas);
         msg.react("🇫");
-    };
+    }
 };

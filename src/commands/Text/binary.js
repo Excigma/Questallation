@@ -1,6 +1,6 @@
 const { TextCommand } = require(`${process.cwd()}/src/index`);
 const binary = (string) => {
-    return string.split("").map(function(char) {
+    return string.split("").map((char) => {
         return char.charCodeAt(0).toString(2);
     }).join(" ");
 };

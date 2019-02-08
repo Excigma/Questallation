@@ -23,7 +23,7 @@ module.exports = class extends Command {
 
         reminders.forEach(r => {
             Display.addPage(new MessageEmbed()
-                .setAuthor(message.author.username + ",", message.author.displayAvatarURL())
+                .setAuthor(`${message.author.username},`, message.author.displayAvatarURL())
                 .setColor(0x7289DA)
                 .setTitle(`Reminders - ${r.id}, in ${Duration.toNow(r.time)}`)
                 .setDescription(r.data.text));

@@ -31,7 +31,7 @@ ${isFunction(command.description) ? command.description(message.language) : comm
 **Usage:**
 ${command.usage.fullUsage(message)}
 **Example(s):**
-${typeof command.extendedHelp == "object" ? command.extendedHelp.map(example => `${message.guildSettings.prefix} ${command.name} ${example}`).join("\n") : "No example for this command"}`));
+${typeof command.extendedHelp === "object" ? command.extendedHelp.map(example => `${message.guildSettings.prefix} ${command.name} ${example}`).join("\n") : "No example for this command"}`));
 		}
 
 		if (message.guild && message.channel.permissionsFor(this.client.user).has(PERMISSIONS_RICHDISPLAY)) {
@@ -49,7 +49,7 @@ ${typeof command.extendedHelp == "object" ? command.extendedHelp.map(example => 
 		}
 
 		const method = this.client.user.bot ? "author" : "channel";
-		return message[method].send(await this.buildHelp(message) + "\nOr check online for the commands: https://excigmabot.glitch.me/commands", { split: { char: "\n" } })
+		return message[method].send(`${await this.buildHelp(message)}\nOr check online for the commands: https://excigmabot.glitch.me/commands`, { split: { char: "\n" } })
 			.then(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaTick:534470159465971722> | The list of commands you have access to has been sent to your DMs."); })
 			.catch(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaCross:534470159604383744> | You have DMs disabled, I couldn't send you the commands in DMs.\nYou can check online for our commands here though: https://excigmabot.glitch.me/commands"); });
 	}
@@ -68,7 +68,7 @@ ${typeof command.extendedHelp == "object" ? command.extendedHelp.map(example => 
 		const display = new RichDisplay();
 		for (const [category, list] of commands) {
 			display.addPage(new MessageEmbed(message.excigmaEmbed)
-				.setAuthor(message.author.username + ",", message.author.displayAvatarURL())
+				.setAuthor(`${message.author.username},`, message.author.displayAvatarURL())
 				.setColor(0x7289DA)
 				.setTitle(`${category} Commands`)
 				.setDescription(list.map(this.formatCommand.bind(this, message, message.guildSettings.prefix, true)).join("\n"))

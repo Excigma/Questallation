@@ -14,4 +14,4 @@ module.exports = class extends AnimalCommand {
             .setTitle("Bird")
             .setImage(`https://random.birb.pw/img/${body}`));
     }
-}
+};

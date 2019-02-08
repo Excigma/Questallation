@@ -31,7 +31,7 @@ module.exports = class extends MusicCommand {
             await sleep(300);
 
             try {
-                if (!await new Promise(async(resolve) => {
+                if (!await new Promise(async (resolve) => {
                         (await music.play())
                         .on("end", () => {
                                 music.skip();

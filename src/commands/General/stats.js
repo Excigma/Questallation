@@ -14,7 +14,7 @@ module.exports = class extends Command {
         async run(message) {
                 message.send(`
 =  Bot infomation =
-	User Count       :: ${this.client.guilds.reduce((p, c) => p + c.memberCount, 0).toLocaleString() + " users"}
+	User Count       :: ${`${this.client.guilds.reduce((p, c) => p + c.memberCount, 0).toLocaleString()} users`}
 	Bots Count       :: ${this.client.users.filter(user => user.bot).size.toLocaleString()} bots.
 	Server Count     :: ${this.client.guilds.size.toLocaleString()} servers
 	Custom emojis    :: ${this.client.emojis.size.toLocaleString()} emojis

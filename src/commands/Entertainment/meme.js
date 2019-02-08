@@ -31,8 +31,8 @@ module.exports = class extends Command {
 			"fffffffuuuuuuuuuuuu"
 		].random()}/random.json`).then(res => res.json());
 
-        if (!body[0].data.children[0].data.preview.images[0].source.url) return this.store.get("meme").run(message)
-        if (body[0].data.children[0].data.over_18 && !message.channel.nsfw) return this.store.get("meme").run(message)
+        if (!body[0].data.children[0].data.preview.images[0].source.url) return this.store.get("meme").run(message);
+        if (body[0].data.children[0].data.over_18 && !message.channel.nsfw) return this.store.get("meme").run(message);
 
 
         message.sendEmbed(new MessageEmbed(message.excigmaEmbed)

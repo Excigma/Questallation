@@ -13,4 +13,4 @@ module.exports = class extends AnimalCommand {
             .setTitle("Owl")
             .setImage(body.image.replace(".gifv", ".gif")));
     }
-}
+};

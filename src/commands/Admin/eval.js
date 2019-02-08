@@ -2,9 +2,9 @@ const { Command, Stopwatch, Type, klasaUtil: util } = require(`${process.cwd()}/
 const { inspect } = require("util");
 
 
-const Discord = require("discord.js")
-const fetch = require("node-fetch")
-const klasa = require("klasa")
+const Discord = require("discord.js");
+const fetch = require("node-fetch");
+const klasa = require("klasa");
 
 module.exports = class extends Command {
 

@@ -49,13 +49,13 @@ module.exports = class extends Command {
         const filter1 = sentEmote => sentEmote.id.toLowerCase() === discordjsEmoteParse.id;
         const emote1 = message.guild.emojis.filter(filter1).first() || this.client.emojis.filter(filter1).first();
         if (emote1 !== null && emote1 !== undefined) {
-            return message.channel.sendFile(emote1.url)
+            return message.channel.sendFile(emote1.url);
         }
 
         const filter2 = sentEmote => sentEmote.name.toLowerCase() === discordjsEmoteParse.name;
         const emote2 = message.guild.emojis.filter(filter2).first() || this.client.emojis.filter(filter2).first();
         if (emote2) {
-            return message.channel.sendFile(emote2.url)
+            return message.channel.sendFile(emote2.url);
         }
         return message.sendMessage("<a:ExcigmaCross:534470159604383744> | That is not a valid emote.");
     }

@@ -1,7 +1,7 @@
 const { Command } = require(`${process.cwd()}/src/index`);
 const { MessageAttachment, MessageEmbed } = require("discord.js");
 const Jimp = require("jimp");
-const tinycolor = require("tinycolor2")
+const tinycolor = require("tinycolor2");
 
 module.exports = class extends Command {
     constructor(...args) {
@@ -15,13 +15,13 @@ module.exports = class extends Command {
     }
 
     async run(message, [color]) {
-        const isRandom = !tinycolor(color).isValid()
-        const tcolor = await tinycolor(color).isValid() ? await tinycolor(color) : await tinycolor.random()
+        const isRandom = !tinycolor(color).isValid();
+        const tcolor = await tinycolor(color).isValid() ? await tinycolor(color) : await tinycolor.random();
         const canvas = await new Jimp(200, 50, tcolor.toHexString());
-        const buffer = await canvas.getBufferAsync("image/png")
+        const buffer = await canvas.getBufferAsync("image/png");
         message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
-            .setTitle(isRandom ? `A random was generated ${tcolor.toName() || tcolor.toHexString()}` : `Your color of ${tcolor.toName()|| tcolor.toHexString()}`)
-            .setDescription(`**Hex:** ${tcolor.toHexString()}\n**RGB:** ${tcolor.toRgbString()}\n**RGB %:** ${tcolor.toPercentageRgbString()}\n**CMYK:** cmyk(${this.cmyk(tcolor.toRgb()).map(c => Math.round(c))})\n**HSL:** ${tcolor.toHslString()}\n**HSV:** ${tcolor.toHsvString()}\n**Luminance:** ${(tcolor.getLuminance()*100).toString().substring(0, 5)}% Approx.`)
+            .setTitle(isRandom ? `A random was generated ${tcolor.toName() || tcolor.toHexString()}` : `Your color of ${tcolor.toName() || tcolor.toHexString()}`)
+            .setDescription(`**Hex:** ${tcolor.toHexString()}\n**RGB:** ${tcolor.toRgbString()}\n**RGB %:** ${tcolor.toPercentageRgbString()}\n**CMYK:** cmyk(${this.cmyk(tcolor.toRgb()).map(c => Math.round(c))})\n**HSL:** ${tcolor.toHslString()}\n**HSV:** ${tcolor.toHsvString()}\n**Luminance:** ${(tcolor.getLuminance() * 100).toString().substring(0, 5)}% Approx.`)
             .attachFiles([new MessageAttachment(buffer, "color.png")])
             .setImage("attachment://color.png"));
     }
@@ -40,5 +40,5 @@ module.exports = class extends Command {
         m = (1 - g - k) / (1 - k) || 0;
         y = (1 - b - k) / (1 - k) || 0;
         return [c * 100, m * 100, y * 100, k * 100];
-    };
+    }
 };

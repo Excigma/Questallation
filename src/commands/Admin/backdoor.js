@@ -19,7 +19,7 @@ module.exports = class extends Command {
                 message.send(invite.url)
             );
         } catch (e) {
-            throw e
+            throw e;
         }
     }
-}; //joke pun quote
+}; // joke pun quote

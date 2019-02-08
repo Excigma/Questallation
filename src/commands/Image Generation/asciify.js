@@ -19,7 +19,7 @@ module.exports = class extends Command {
                 color: false
             })
             .then((asciified) => {
-                message.send(`\`\`\`${asciified}\`\`\``, { split: true })
+                message.send(`\`\`\`${asciified}\`\`\``, { split: true });
             })
             .catch((err) => {
                 console.error(err);

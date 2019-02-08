@@ -1,5 +1,5 @@
 const { Command, RichDisplay } = require(`${process.cwd()}/src/index`);
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = class extends Command {
@@ -18,7 +18,7 @@ module.exports = class extends Command {
 
         const display = new RichDisplay();
 
-        const body = await fetch(`http://api.urbandictionary.com/v0/define?term=${Query.split(" ").join("+")}`).then(res => res.json())
+        const body = await fetch(`http://api.urbandictionary.com/v0/define?term=${Query.split(" ").join("+")}`).then(res => res.json());
 
         if (body.list.length < 1) return message.sendMessage("<a:ExcigmaCross:534470159604383744> | There was no definition found.");
 

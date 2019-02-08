@@ -1,12 +1,12 @@
-Jimp.prototype.perspective = function(cb) {
-    var xSkewInRadians = Math.tan((30 * Math.PI) / 180); //30
+Jimp.prototype.perspective = function (cb) {
+    var xSkewInRadians = Math.tan((30 * Math.PI) / 180); // 30
     var xShear = parseInt(this.bitmap.height * xSkewInRadians);
     var xShearForThisLine = undefined;
     var original = this;
 
-    debug('perspective xShear:' + xShear);
+    debug(`perspective xShear:${xShear}`);
 
-    new Jimp(this.bitmap.width, this.bitmap.height, '#000000FF', function(
+    new Jimp(this.bitmap.width, this.bitmap.height, "#000000FF", function (
         errNew,
         imgCanvas
     ) {

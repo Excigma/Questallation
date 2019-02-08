@@ -30,8 +30,8 @@ const permissions = {
     MANAGE_EMOJIS: 1073741824
 };
 
-const convertReadable = function(permName) {
-    let names = {
+const convertReadable = function (permName) {
+    const names = {
         ADMINISTRATOR: "Administrator",
         MANAGE_GUILD: "Manage Server",
         MANAGE_ROLES: "Manage Roles",
@@ -67,13 +67,13 @@ const convertReadable = function(permName) {
     return names[permName];
 };
 
-const convertPerms = function(permNumber) {
-    //if readableNames is set to true, use the names at Discord instead of the names of PermissionResolvables at discord.js.
+const convertPerms = function (permNumber) {
+    // if readableNames is set to true, use the names at Discord instead of the names of PermissionResolvables at discord.js.
     if (isNaN(Number(permNumber))) throw new TypeError(`Expected permissions number, and received ${typeof permNumber} instead.`);
     permNumber = Number(permNumber);
-    let evaluatedPerms = {};
-    for (let perm in permissions) {
-        let hasPerm = Boolean(permNumber & permissions[perm]);
+    const evaluatedPerms = {};
+    for (const perm in permissions) {
+        const hasPerm = Boolean(permNumber & permissions[perm]);
         evaluatedPerms[convertReadable(perm)] = hasPerm;
     }
     return evaluatedPerms;

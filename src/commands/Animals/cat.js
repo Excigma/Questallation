@@ -13,4 +13,4 @@ module.exports = class extends AnimalCommand {
             .setTitle("Cat")
             .setImage(body.file));
     }
-}
+};

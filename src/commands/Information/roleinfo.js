@@ -60,8 +60,8 @@ module.exports = class extends Command {
             .setDescription(`**❯ Permissions**\n ${allPermissions || "No permissions"}`)
             .addField("❯ Hoisted", role.hoist ? "Yes" : "No")
             .addField("❯ Mentionable", role.mentionable ? "Yes" : "No")
-            .addField("❯ Position", role.position))
-        return display.run(await message.send("Loading..."))
+            .addField("❯ Position", role.position));
+        return display.run(await message.send("Loading..."));
     }
 
 };

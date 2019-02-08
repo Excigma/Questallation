@@ -20,17 +20,17 @@ module.exports = class extends Command {
             maxLength: 500,
             char: "\n"
         });
-        if (typeof chunks == "object") {
+        if (typeof chunks === "object") {
             for (const chunk of chunks) {
                 display.addPage(new MessageEmbed(message.excigmaEmbed)
                     .setTitle("List channels")
-                    .setDescription(chunk))
+                    .setDescription(chunk));
             }
             return display.run(await message.send("Loading data..."));
         } else {
             return message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
                 .setTitle("List channels")
-                .setDescription(chunks))
+                .setDescription(chunks));
         }
 
 

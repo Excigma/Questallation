@@ -8,7 +8,7 @@ module.exports = class extends Task {
 
         return _channel.send(`<@${user}>`, {
             embed: new MessageEmbed()
-                .setAuthor(_user.tag + ",", _user.displayAvatarURL())
+                .setAuthor(`${_user.tag},`, _user.displayAvatarURL())
                 .setColor(0x7289DA)
                 .setTitle("You asked me to remind you about: ")
                 .setDescription(text)

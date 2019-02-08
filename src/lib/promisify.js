@@ -1,4 +1,4 @@
-const nodeVersion = parseInt(process.versions.node.split('.'), 10);
+const nodeVersion = parseInt(process.versions.node.split("."), 10);
 
 /**
  * Promisifies a function
@@ -7,7 +7,7 @@ const nodeVersion = parseInt(process.versions.node.split('.'), 10);
  */
 function promisify(fn) {
     let name = fn.name; // eslint-disable-line prefer-destructuring
-    name = (name || '').replace(/\s|bound(?!$)/g, '');
+    name = (name || "").replace(/\s|bound(?!$)/g, "");
 
     function newFunction(...args) {
         const arg = [];
@@ -18,8 +18,8 @@ function promisify(fn) {
                 return resolve(res);
             }]));
     }
-    Object.defineProperty(newFunction, 'name', { value: name });
+    Object.defineProperty(newFunction, "name", { value: name });
     return newFunction;
 }
 
-module.exports = fn => (nodeVersion >= 8 ? require('util').promisify(fn) : promisify(fn));
+module.exports = fn => nodeVersion >= 8 ? require("util").promisify(fn) : promisify(fn);

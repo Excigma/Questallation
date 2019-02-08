@@ -20,8 +20,8 @@ module.exports = class extends Command {
         const chunks = Util.splitMessage(body.extract, {
             maxLength: 500,
             char: "."
-        })
-        if (typeof chunks == "object") {
+        });
+        if (typeof chunks === "object") {
             const display = new RichDisplay();
             for (const entry of chunks) {
                 const embed = new MessageEmbed(message.excigmaEmbed)
@@ -38,7 +38,7 @@ module.exports = class extends Command {
                 .setURL(body.content_urls.desktop.page)
                 .setTitle(`Wikipedia: ${body.title}`)
                 .setDescription(`**${body.description}**\n${chunks}`);
-            message.sendEmbed(embed)
+            message.sendEmbed(embed);
         }
     }
 

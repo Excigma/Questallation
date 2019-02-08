@@ -1,12 +1,12 @@
 const { Command } = require(`${process.cwd()}/src/index`);
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 
 module.exports = class extends Command {
         constructor(...args) {
             super(...args, {
                 description: "Searches discord.js documentations.",
                 usage: "<query:str> [version:str]",
-                usageDelim: " ",
+                usageDelim: " "
             });
             this.docs = {};
         }

@@ -18,7 +18,7 @@ module.exports = class extends Command {
         const stopwatch = new Stopwatch();
 
         message.channel.send("Fetching image...");
-        Jimp.read(user.displayAvatarURL({ format: "png", size: 512 }), async(err, image) => {
+        Jimp.read(user.displayAvatarURL({ format: "png", size: 512 }), async (err, image) => {
             if (err) {
                 return message.sendMessage("<a:ExcigmaCross:534470159604383744> | There was an error.");
             }
@@ -37,7 +37,7 @@ Modified by UniQMG#0522
 Processing image... this may take some time.`);
             await image
                 .greyscale()
-                .scan(0, 0, image.bitmap.width, image.bitmap.height, async function(x, y, idx) {
+                .scan(0, 0, image.bitmap.width, image.bitmap.height, async function (x, y, idx) {
                     var red = this.bitmap.data[idx + 0];
                     var green = this.bitmap.data[idx + 1];
                     var blue = this.bitmap.data[idx + 2];
@@ -57,7 +57,7 @@ Processing image... this may take some time.`);
                     this.bitmap.data[idx + 2] = blue;
                     this.bitmap.data[idx + 3] = alpha;
                 })
-                .getBuffer("image/png", async(err, buffer) => {
+                .getBuffer("image/png", async (err, buffer) => {
                     message.channel.send({ files: [new Discord.MessageAttachment(buffer, "image.png")] });
                     message.channel.send(`Hmm that took ${stopwatch.toString()}`);
                     stopwatch.stop();

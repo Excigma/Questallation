@@ -1,5 +1,5 @@
 const { Argument } = require(`${process.cwd()}/src/index`);
-const lev = require("js-levenshtein")
+const lev = require("js-levenshtein");
 
 module.exports = class extends Argument {
 
@@ -18,12 +18,12 @@ module.exports = class extends Argument {
                 if (msg.guild.members.fetch(user).catch(() => null)) return msg.guild.members.fetch(user).catch(() => null);
             }
         }
-        var object = {}
+        var object = {};
         for (const member of msg.guild.members.values()) {
-            object[lev(member.user.tag, arg)] = member.id
+            object[lev(member.user.tag, arg)] = member.id;
         }
 
-        const final = msg.guild.member.get(object[Object.values(Object.keys(object).sort((a, b) => a - b))[0]])
+        const final = msg.guild.member.get(object[Object.values(Object.keys(object).sort((a, b) => a - b))[0]]);
         if (final) return final;
         throw (msg.language || this.client.languages.default).get("RESOLVER_INVALID_MEMBER", possible.name);
 

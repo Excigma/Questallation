@@ -1,19 +1,19 @@
-const klasa = require("klasa")
-const { MessageEmbed, MessageAttachment } = require("discord.js")
+const klasa = require("klasa");
+const { MessageEmbed, MessageAttachment } = require("discord.js");
 
 module.exports = {
-    //Export klasa
+    // Export klasa
     ...klasa,
-    //Commands
+    // Commands
     MusicCommand: require("./lib/structures/MusicCommand"),
     MusicManager: require("./lib/structures/MusicManager"),
     AnimalCommand: require("./lib/structures/AnimalCommand"),
     CanvasCommand: require("./lib/structures/CanvasCommand"),
     TextCommand: require("./lib/structures/TextCommand"),
-    //D.js stuff
+    // D.js stuff
     MessageEmbed: MessageEmbed,
     MessageAttachment: MessageAttachment,
-    //Misc
+    // Misc
     util: require("./lib/util"),
     klasaUtil: klasa.util
 };

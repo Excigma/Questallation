@@ -34,7 +34,7 @@ module.exports = class extends Command {
             msg += user !== null ? msgFilter[1].replace("User", user.tag) : msgFilter[1];
         }
         messages = messages.array().slice(0, limit);
-        if (messages.length < 1) return message.send(`<a:ExcigmaCross:534470159604383744> | There are no messages to delete`)
+        if (messages.length < 1) return message.send(`<a:ExcigmaCross:534470159604383744> | There are no messages to delete`);
         if (Date.now() - 1209600000 > messages[messages.length - 1].createdTimestamp) msg += "\n<:excigmabot_warn:490319593274081280> |  Messages older than 2 weeks cannot be deleted";
 
         await message.channel.bulkDelete(messages, true);

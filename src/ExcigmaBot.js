@@ -6,7 +6,7 @@ require(`${process.cwd()}/src/lib/dotenv`).config();
 require(`${process.cwd()}/src/lib/structures/ExcigmaGuild`);
 require(`${process.cwd()}/src/lib/structures/ExcigmaMessage`);
 
-Client.use(require('klasa-member-gateway'));
+Client.use(require("klasa-member-gateway"));
 Client.use(require("klasa-dashboard-hooks"));
 
 new Client().login(production ? process.env.TOKEN : process.env.PTB);
