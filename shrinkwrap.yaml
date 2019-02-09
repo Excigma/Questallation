@@ -16,7 +16,7 @@ dependencies:
   memory-cache: 0.2.0
   nedb-core: 3.0.6
   node-fetch: 2.3.0
-  opusscript: 0.0.6
+  node-opus: 0.3.1
   tinycolor2: 1.4.1
   ytdl-core: 0.20.4
   zlib-sync: 0.1.4
@@ -457,6 +457,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-g4qZLan51zfg9LLbC+YrsJ3Qxeg=
+  /bindings/1.2.1:
+    dev: false
+    resolution:
+      integrity: sha1-FK1hE4EtLTfXLme0ystLtyZQXxE=
   /bindings/1.4.0:
     dependencies:
       file-uri-to-path: 1.0.0
@@ -496,6 +500,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-brWl9y6vOB1xYPZcpZde3N9zDByXTosAeMDo4p1wzo6UMOX4vumB+TP1RZ76sfE6Md68Q0NJSrE/gbezd4Ul+w==
+  /commander/2.19.0:
+    dev: false
+    resolution:
+      integrity: sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
   /complex.js/2.0.4:
     dev: false
     resolution:
@@ -524,6 +532,13 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
+  /debug/2.6.9:
+    dependencies:
+      ms: 2.0.0
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
   /decimal.js/9.0.1:
     dev: false
     resolution:
@@ -922,6 +937,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
+  /ms/2.0.0:
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
   /nan/2.12.1:
     dev: false
     resolution:
@@ -942,18 +962,34 @@ packages:
       node: 4.x || >=6.0.0
     resolution:
       integrity: sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
+  /node-opus/0.3.1:
+    dependencies:
+      bindings: 1.2.1
+      commander: 2.19.0
+      nan: 2.12.1
+    dev: false
+    engines:
+      node: '>=5.10.0'
+    optionalDependencies:
+      ogg-packet: 1.0.0
+    requiresBuild: true
+    resolution:
+      integrity: sha512-1Cb8OvHhdDspVfeKMjEgbedJabyE1Ib6OcN2BMEsRCU7FIsciuBpOErcie3y0qTf83nclPAY+kBU3Oj+U+oRlQ==
   /oauth-sign/0.9.0:
     dev: false
     resolution:
       integrity: sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
+  /ogg-packet/1.0.0:
+    dependencies:
+      ref-struct: 1.1.0
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha1-RbiFchrI991c8iOR1CEGrlM6xng=
   /omggif/1.0.9:
     dev: false
     resolution:
       integrity: sha1-3LcCTazVDFK00wPwSALJHAV8dl8=
-  /opusscript/0.0.6:
-    dev: false
-    resolution:
-      integrity: sha512-F7nx1SWZCD5Rq2W+5Fx39HlkRkz/5Zqt0LglEB9uHexk8HjedDEiM+u/Y2rBfDFcS/0uQIWu2lJhw+Gjsta+cA==
   /pako/1.0.8:
     dev: false
     resolution:
@@ -1033,6 +1069,24 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-X2jKswfmY/GZk1J9m1icrORmEZQ=
+  /ref-struct/1.1.0:
+    dependencies:
+      debug: 2.6.9
+      ref: 1.3.5
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha1-XV7mWtQc78Olxf60BYcmHkee3BM=
+  /ref/1.3.5:
+    dependencies:
+      bindings: 1.4.0
+      debug: 2.6.9
+      nan: 2.12.1
+    dev: false
+    optional: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-2cBCniTtxcGUjDpvFfVpw323a83/0RLSGJJY5l5lcomZWhYpU2cuLdsvYqMixvsdLJ9+sTdzEkju8J8ZHDM2nA==
   /regenerator-runtime/0.12.1:
     dev: false
     resolution:
@@ -1373,7 +1427,7 @@ specifiers:
   memory-cache: ^0.2.0
   nedb-core: ^3.0.6
   node-fetch: ^2.3.0
-  opusscript: 0.0.6
+  node-opus: ^0.3.1
   tinycolor2: ^1.4.1
   ytdl-core: ^0.20.4
   zlib-sync: ^0.1.4
