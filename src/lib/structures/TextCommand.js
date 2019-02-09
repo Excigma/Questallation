@@ -11,8 +11,6 @@ class TextCommand extends Command {
 
         };
         this.convert = (string, object) => string.replace(new RegExp(`/[${object.values()}]/`, "gi"), match => object[match]);
-
-
     }
 }
 
