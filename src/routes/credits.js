@@ -14,5 +14,6 @@ module.exports = class extends Route {
 			}
 			response.end(str);
 		});
-		
+	}
+
 };
