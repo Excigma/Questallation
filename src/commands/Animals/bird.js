@@ -9,9 +9,9 @@ module.exports = class extends AnimalCommand {
     }
 
     async run(message) {
-        const body = await this.getPicture("http://random.birb.pw/tweet/").then(res => res.text());
+        const body = await this.getPicture("https://some-random-api.ml/birbimg").then(res => res.json());
         message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
             .setTitle("Bird")
-            .setImage(`https://random.birb.pw/img/${body}`));
+            .setImage(body.link));
     }
 };

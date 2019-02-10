@@ -24,7 +24,7 @@ module.exports = class extends Command {
             const body = await fetch(`http://tts.cyzon.us/tts?${qs.stringify({ text: str })}`).then(res => res.buffer());
             message.send(`Talking into ${message.guild.me.voice.channel.name} | ${message.author.tag} `);
             const dispatcher = await message.guild.me.voice.channel.connection.play(new PassThrough()
-                .end(body), { volume: 6 });
+                .end(body), { volume: 7 });
 
 
             dispatcher.on("finish", () => {

@@ -5,7 +5,7 @@ const HTMLParser = require("fast-html-parser");
 module.exports = class extends Command {
 
     constructor(...args) {
-        super(...args, { description: "Gets a random FML story." });
+        super(...args, { description: "Gets a random FML story.", nsfw: true });
     }
 
     async run(msg) {
@@ -17,10 +17,10 @@ module.exports = class extends Command {
         const updoot = root.querySelector(".vote-up");
 
         if (article.childNodes[0].text.length < 5) {
-            return msg.sendMessage("<a:ExcigmaCross:534470159604383744> | Today, something went wrong, so you will have to try again in a few moments. FML again.");
+            return this.store.get("fml").run(msg);
         }
 
-        return msg.sendEmbed(new MessageEmbed(message.excigmaEmbed)
+        return msg.sendEmbed(new MessageEmbed(msg.excigmaEmbed)
             .setTitle(`Requested by ${msg.author.tag}`)
             .setDescription(`_${article.childNodes[0].text}\n\n_`)
             .addField("I agree, your life sucks", updoot.childNodes[0].text, true)
