@@ -10,7 +10,14 @@ class TextCommand extends Command {
                 .setDescription(string));
 
         };
-        this.convert = (string, object) => string.replace(new RegExp(`/[${object.values()}]/`, "gi"), match => object[match]);
+        this.convert = (str, data) => {
+            let string = str;
+            for (const entry of Object.keys(data)) {
+                string = string.replaceAll(entry, data[entry]);
+            }
+            return string;
+        };
+
     }
 }
 

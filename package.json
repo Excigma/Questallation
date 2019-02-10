@@ -27,7 +27,7 @@
         "zlib-sync": "^0.1.4"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "SET NODE_ENV=development&&supervisor start  -i . ./src/ExcigmaBot.js",
         "start": "NODE_ENV=production node ./src/ExcigmaBot.js"
     },
     "author": "Excigma",

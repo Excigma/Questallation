@@ -1,7 +1,7 @@
 console.log("...");
 const Client = require(`${process.cwd()}/src/lib/structures/ExcigmaClient`);
-const production = process.env.NODE_ENV === "production";
 require(`${process.cwd()}/src/lib/dotenv`).config();
+const production = process.env.NODE_ENV === "production";
 
 require(`${process.cwd()}/src/lib/structures/ExcigmaGuild`);
 require(`${process.cwd()}/src/lib/structures/ExcigmaMessage`);
