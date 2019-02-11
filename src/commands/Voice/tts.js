@@ -30,8 +30,8 @@ module.exports = class extends Command {
             dispatcher.on("finish", () => {
                 message.send(`Fineshed speaking ${str} | by ${message.author.tag} into ${message.guild.me.voice.channel.name}`);
             });
-        } catch (e) {
-            message.channel.send(`There is an error. It might be you Woz. Screw you Woz why do you break everything.\n${e}`);
+        } catch (error) {
+            throw error;
         }
     }
 };
