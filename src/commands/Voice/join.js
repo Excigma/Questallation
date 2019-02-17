@@ -20,8 +20,8 @@ module.exports = class extends MusicCommand {
         const voiceChannel = msg.member.voice.channel;
         if (!voiceChannel) throw "<a:ExcigmaCross:534470159604383744> | You are not connected in a voice channel.";
         if (msg.guild.music.playing) {
-            const excigmaBotChannel = msg.guild.music.voice.channel;
-            if (voiceChannel.id === excigmaBotChannel.id) throw "<a:ExcigmaTick:534470159465971722> | I have already joined the voice channel";
+            const QuestallationChannel = msg.guild.music.voice.channel;
+            if (voiceChannel.id === QuestallationChannel.id) throw "<a:ExcigmaTick:534470159465971722> | I have already joined the voice channel";
             throw "<a:ExcigmaCross:534470159604383744> | I'm being used in another voice channel so I can't join your channel.";
         }
         this.resolvePermissions(msg, voiceChannel);

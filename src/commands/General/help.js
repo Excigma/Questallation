@@ -49,9 +49,9 @@ ${typeof command.extendedHelp === "object" ? command.extendedHelp.map(example =>
 		}
 
 		const method = this.client.user.bot ? "author" : "channel";
-		return message[method].send(`${await this.buildHelp(message)}\nOr check online for the commands: https://excigmabot.glitch.me/commands`, { split: { char: "\n" } })
+		return message[method].send(`${await this.buildHelp(message)}\nOr check online for the commands: https://Questallation.glitch.me/commands`, { split: { char: "\n" } })
 			.then(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaTick:534470159465971722> | The list of commands you have access to has been sent to your DMs."); })
-			.catch(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaCross:534470159604383744> | You have DMs disabled, I couldn't send you the commands in DMs.\nYou can check online for our commands here though: https://excigmabot.glitch.me/commands"); });
+			.catch(() => { if (message.channel.type !== "dm" && this.client.user.bot) message.sendMessage("<a:ExcigmaCross:534470159604383744> | You have DMs disabled, I couldn't send you the commands in DMs.\nYou can check online for our commands here though: https://Questallation.glitch.me/commands"); });
 	}
 
 	async buildHelp(message) {

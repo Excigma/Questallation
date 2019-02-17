@@ -9,12 +9,12 @@ module.exports = class extends MusicCommand {
     async run(msg) {
         const { music } = msg.guild;
 
-        if (!music.queue.length) { return msg.sendMessage(`<:excigmabot_warn:490319593274081280> | The queue is empty, add new songs with \`${msg.guild.settings.prefix}add\`.`); }
+        if (!music.queue.length) { return msg.sendMessage(`<:Questallation_warn:490319593274081280> | The queue is empty, add new songs with \`${msg.guild.settings.prefix}add\`.`); }
 
         if (!music.voiceChannel) await this.store.get("join").run(msg);
 
         if (music.playing) {
-            return msg.sendMessage("<:excigmabot_warn:490319593274081280> | I am already playing music");
+            return msg.sendMessage("<:Questallation_warn:490319593274081280> | I am already playing music");
         } else if (music.paused) {
             music.resume();
             return msg.sendMessage(`<a:ExcigmaTick:534470159465971722> | Resumed, now playing: **${music.queue[0].title}**`);

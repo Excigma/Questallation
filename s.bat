@@ -1,2 +1,2 @@
-node ./src/ExcigmaBot.js
+node ./src/Questallation.js
 PAUSE

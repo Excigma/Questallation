@@ -24,7 +24,7 @@ module.exports = class extends Command {
             "Ping pong, it took {{ping}}",
             "Oh hi, it took me {{ping}}",
             "It took me {{ping}}... Sorry I was taking a nap",
-            "{{ping}}! If I'm offline, you can go to <https://excigmabot.glitch.me>, and I should be online.",
+            "{{ping}}! If I'm offline, you can go to <https://Questallation.glitch.me>, and I should be online.",
             "Eh? {{ping}}?",
             "{{ping}}, sorry I have bad Wifi",
             "{{ping}}, fun fact: I like blurple.",

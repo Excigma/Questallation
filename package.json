@@ -1,8 +1,8 @@
 {
-    "name": "excigmabot",
+    "name": "Questallation",
     "version": "1.0.0",
     "description": "A discord bot.",
-    "main": "src/ExcigmaBot.js",
+    "main": "src/Questallation.js",
     "dependencies": {
         "@discordjs/uws": "^11.149.1",
         "asciify-image": "^0.1.3",
@@ -27,8 +27,8 @@
         "zlib-sync": "^0.1.4"
     },
     "scripts": {
-        "test": "SET NODE_ENV=development&&supervisor start  -i . ./src/ExcigmaBot.js",
-        "start": "NODE_ENV=production node ./src/ExcigmaBot.js"
+        "test": "SET NODE_ENV=development&&supervisor start  -i . ./src/Questallation.js",
+        "start": "NODE_ENV=production node ./src/Questallation.js"
     },
     "author": "Excigma",
     "license": "ISC",
@@ -36,5 +36,5 @@
         "node": "10.5.0",
         "npm": "6.x"
     },
-    "homepage": "https://excigmabot.glitch.me"
+    "homepage": "https://Questallation.glitch.me"
 }

@@ -25,7 +25,7 @@ module.exports = class extends Command {
             "Oh finally, an update"
         ].random());
 
-        const { stdout, stderr } = await util.exec(`git fetch git@github.com:Excigma/ExcigmaBot.git
+        const { stdout, stderr } = await util.exec(`git fetch git@github.com:Excigma/Questallation.git
 git reset --hard FETCH_HEAD
 git clean -df
 `, { timeout: 30000 });

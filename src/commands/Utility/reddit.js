@@ -15,7 +15,7 @@ module.exports = class extends Command {
         const data = await fetch(`https://www.reddit.com/r/${subreddit}/random.json`)
             .then(response => response.json())
             .then(body => {
-                if (body.error) return msg.sendMessage(`<:excigmabot_warn:490319593274081280> |  A error has occured, but this seems to be on reddit's side:\n ${body.error}`);
+                if (body.error) return msg.sendMessage(`<:Questallation_warn:490319593274081280> |  A error has occured, but this seems to be on reddit's side:\n ${body.error}`);
                 return body[0].data.children[0].data;
             })
             .catch((error) => {
@@ -23,7 +23,7 @@ module.exports = class extends Command {
             });
 
         if (data.over_18 && !msg.channel.nsfw) {
-            return msg.sendMessage("<:excigmabot_warn:490319593274081280> |  I cant post a NSFW image in this channel unless you mark it as NSFW");
+            return msg.sendMessage("<:Questallation_warn:490319593274081280> |  I cant post a NSFW image in this channel unless you mark it as NSFW");
         }
 
         return msg.sendMessage(data.url);
