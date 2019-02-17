@@ -42,7 +42,7 @@ module.exports = class extends Client {
         production: production,
         disabledEvents: ["CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"],
         prefix: production ? "eb" : "ed",
-        regexPrefix: production ? /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:bot)?|b)[,!]? ?/i : /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:dev)?|d)[,!]? ?/i,
+        regexPrefix: production ? /^(?:(?:hey|oi|yo) )?q(?:uestallation(?:bot)?|m|l)[,!]? ?/i : /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:dev)?|d)[,!]? ?/i,
         noPrefixDM: true,
         disableEveryone: true,
         ownerID: "321137772054183947",
@@ -53,7 +53,7 @@ module.exports = class extends Client {
             port: process.env.PORT
         },
         console: production ? { useColor: false, utc: true } : { useColor: true, utc: true },
-        presence: production ? { activity: { name: "for ebhelp", type: "WATCHING" } } : { activity: { name: "for edhelp", type: "WATCHING" } },
+        presence: production ? { activity: { name: "for qmhelp", type: "WATCHING" } } : { activity: { name: "for edhelp", type: "WATCHING" } },
         pieceDefaults: {
             commands: {
                 promptLimit: 1,
