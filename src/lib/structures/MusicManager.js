@@ -181,22 +181,8 @@ class MusicManager {
         const { connection } = this;
         if (connection) {
             connection.disconnect();
-        } else {
-            /* eslint-disable camelcase */
-            this.client.ws.send({
-                op: 4,
-                shard: this.client.shard ? this.client.shard.id : 0,
-                d: {
-                    guild_id: this.guild.id,
-                    channel_id: null,
-                    self_mute: false,
-                    self_deaf: false
-                }
-            });
-            /* eslint-enable camelcase */
         }
     }
-
 }
 
 module.exports = MusicManager;

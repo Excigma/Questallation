@@ -1,7 +1,6 @@
-const { Command } = require("klasa");
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
-
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             description: "CAncERcAse.",

@@ -13,7 +13,7 @@ module.exports = class extends Command {
     }
 
     async run(msg, str) {
-        if (/@(everyone|here)/g.test(str)) return msg.send("<:excigmabot_warn:490319593274081280> | No you cannot mention everyone.");
+        if (/@(everyone|here)/g.test(str)) return msg.send(`${this.client.emotes.cross} No you cannot mention everyone.`);
         const webhook = await msg.channel.createWebhook("CIyde", {
             avatar: "https://discordapp.com/assets/f78426a064bc9dd24847519259bc42af.png"
         });

@@ -79,8 +79,11 @@ module.exports = class extends Client {
             .add(10, (msg) => msg.member.id === "321137772054183947", { fetch: true })
     }) {
         super(options);
-        this.tick = "<a:ExcigmaTick:534470159465971722> |";
-        this.cross = "<a:ExcigmaCross:534470159604383744> |";
+        this.emotes = {
+            tick: "<a:ExcigmaTick:534470159465971722> |",
+            cross: "<a:ExcigmaCross:534470159604383744> |",
+            spin: "<a:ExcigmaSpin:538917823859130368> |"
+        };
         this.credits = {
 
         };

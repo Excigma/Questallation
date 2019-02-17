@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 class TextCommand extends Command {
     constructor(...args) {
         super(...args);
+
         this.sendText = (message, string) => {
             return message.sendEmbed(new MessageEmbed(message.excigmaEmbed)
                 .setTitle(message.command.name.toProperCase())
