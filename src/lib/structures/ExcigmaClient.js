@@ -41,7 +41,7 @@ module.exports = class extends Client {
         retryLimit: 5,
         production: production,
         disabledEvents: ["CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"],
-        prefix: production ? "eb" : "ed",
+        prefix: production ? "qm" : "ed",
         regexPrefix: production ? /^(?:(?:hey|oi|yo) )?q(?:uestallation(?:bot)?|m|l)[,!]? ?/i : /^(?:(?:hey|oi|yo) )?e(?:xcigma(?:dev)?|d)[,!]? ?/i,
         noPrefixDM: true,
         disableEveryone: true,
