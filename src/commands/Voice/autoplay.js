@@ -17,8 +17,8 @@ module.exports = class extends MusicCommand {
         music.autoplay = enabled;
 
         return msg.sendMessage(enabled ?
-            `<a:ExcigmaTick:534470159465971722> | Autoplay is turned on` :
-            `<a:ExcigmaTick:534470159465971722> | Autoplay is turned off`);
+            `${this.client.emotes.tick} | Autoplay is turned on` :
+            `${this.client.emotes.tick} | Autoplay is turned off`);
     }
 
 };

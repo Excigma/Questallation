@@ -1,4 +1,4 @@
-const { MusicCommand, klasaUtil: { sleep } } = require(`${process.cwd()}/src/index`);
+const { MusicCommand, klasaUtil: { sleep }, MessageEmbed } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends MusicCommand {
 
@@ -17,7 +17,9 @@ module.exports = class extends MusicCommand {
             return msg.sendMessage("<:Questallation_warn:490319593274081280> | I am already playing music");
         } else if (music.paused) {
             music.resume();
-            return msg.sendMessage(`<a:ExcigmaTick:534470159465971722> | Resumed, now playing: **${music.queue[0].title}**`);
+            msg.sendEmbed(new MessageEmbed(msg.excigmaEmbed)
+                .setDescription(`Resumed, now playing: **${music.queue[0].title}**`)
+                .setThumbnail(music.queue[0].image));
         } else {
             music.channel = msg.channel;
             return this.play(music);
@@ -32,21 +34,21 @@ module.exports = class extends MusicCommand {
 
             try {
                 if (!await new Promise(async (resolve) => {
-                        (await music.play())
+                    (await music.play())
                         .on("end", () => {
-                                music.skip();
-                                resolve(true);
-                            })
-                            .on("error", (err) => {
-                                music.channel.send("<a:ExcigmaCross:534470159604383744> | An unexpected error occured");
-                                music.client.emit("error", err);
-                                music.skip();
-                                resolve(true);
-                            })
-                            .once("disconnect", () => {
-                                resolve(false);
-                            });
-                    })) return;
+                            music.skip();
+                            resolve(true);
+                        })
+                        .on("error", (err) => {
+                            music.channel.send("<a:ExcigmaCross:534470159604383744> | An unexpected error occured");
+                            music.client.emit("error", err);
+                            music.skip();
+                            resolve(true);
+                        })
+                        .once("disconnect", () => {
+                            resolve(false);
+                        });
+                })) return;
 
                 // Autofetch if the autoplayer is enabled
                 if (!music.queue.length && music.autoplay) await this.autoPlayer(music);

@@ -66,6 +66,7 @@ class MusicManager {
         });
 
         const metadata = {
+            image: song.thumbnail_url,
             url: song.video_id,
             title: song.title.replace(/@(here|everyone)/, "@\u200B$1"),
             requester: user,

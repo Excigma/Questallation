@@ -10,13 +10,13 @@ module.exports = class extends MusicCommand {
 
     async run(msg) {
         const { remaining, queue, playing } = msg.guild.music;
-        if (!playing) throw `<a:ExcigmaCross:534470159604383744> | No song is right now`;
+        if (!playing) throw `<a:ExcigmaCross:534470159604383744> | No song is playing right now`;
 
         const [song] = queue;
         const info = await getInfo(song.url);
         if (!info.author) info.author = {};
 
-        return msg.sendEmbed(new MessageEmbed()
+        return msg.sendEmbed(new MessageEmbed(msg.excigmaEmbed)
             .setTitle(info.title)
             .setURL(`https://youtu.be/${info.vid}`)
             .setAuthor(info.author.name || "Unknown", info.author.avatar || null, info.author.channel_url || null)

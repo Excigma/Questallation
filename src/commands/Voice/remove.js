@@ -11,8 +11,8 @@ module.exports = class extends MusicCommand {
     }
 
     async run(msg, [number]) {
-        if (number <= 0) {
-            msg.send("<a:ExcigmaCross:534470159604383744> | Number should be bigger or equal to 0");
+        if (number <= 1) {
+            msg.send("<a:ExcigmaCross:534470159604383744> | Number should be bigger or equal to 1");
         }
         number--;
 

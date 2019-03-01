@@ -4,8 +4,6 @@ module.exports = class extends MusicCommand {
 
     constructor(...args) {
         super(...args, {
-            // Disabled until Krypton lands stable
-            enabled: false,
             aliases: ["vol"],
             usage: "[control:string]",
             description: "Manage the volume for current song.",
@@ -30,7 +28,7 @@ module.exports = class extends MusicCommand {
             return msg.sendMessage(`<a:ExcigmaTick:534470159465971722> | ${dispatcher.volume === 0 ? "Muted" : "🔉"} Volume: ${Math.round(dispatcher.volume * 50)}%`);
         }
 
-        msg.sendMessage("Please run the help command for this command to see how to use it");
+        return msg.sendMessage("Please run the help command for this command to see how to use it");
     }
 
 };
