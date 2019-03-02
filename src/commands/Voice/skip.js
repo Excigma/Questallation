@@ -29,7 +29,7 @@ module.exports = class extends MusicCommand {
 
     handleSkips(musicInterface, user) {
         if (!musicInterface.queue[0].skips) musicInterface.queue[0].skips = new Set();
-        if (musicInterface.queue[0].skips.has(user)) return "<:Questallation_warn:490319593274081280> | You have already voted to skip this song.";
+        if (musicInterface.queue[0].skips.has(user)) return `${this.client.emotes.spin} You have already voted to skip this song.`;
         musicInterface.queue[0].skips.add(user);
         const members = musicInterface.voiceChannel.members.size - 1;
         return this.shouldInhibit(members, musicInterface.queue[0].skips.size);
@@ -37,7 +37,7 @@ module.exports = class extends MusicCommand {
 
     shouldInhibit(total, size) {
         if (total <= 2) return true;
-        return size >= total * 0.4 ? false : `<:Questallation_warn:490319593274081280> | | Skip votes: ${size} of ${Math.ceil(total * 0.4)}`;
+        return size >= total * 0.4 ? false : `${this.client.emotes.spin} Skip votes: ${size} of ${Math.ceil(total * 0.4)}`;
     }
 
 };

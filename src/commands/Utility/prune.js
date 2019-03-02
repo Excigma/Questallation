@@ -35,7 +35,7 @@ module.exports = class extends Command {
         }
         messages = messages.array().slice(0, limit);
         if (messages.length < 1) return message.send(`${this.client.emotes.spin} There are no messages to delete`);
-        if (Date.now() - 1209600000 > messages[messages.length - 1].createdTimestamp) msg += "\n<:Questallation_warn:490319593274081280> |  Messages older than 2 weeks cannot be deleted";
+        if (Date.now() - 1209600000 > messages[messages.length - 1].createdTimestamp) msg += `\n${this.client.emotes.cross}  Messages older than 2 weeks cannot be deleted`;
 
         await message.channel.bulkDelete(messages, true);
         return message.channel.send(msg.replace("MessageCount", messages.length)).then(m => m.delete({ timeout: 5000 })).catch(err => { });

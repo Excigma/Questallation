@@ -9,7 +9,7 @@ module.exports = class extends MusicCommand {
     constructor(...args) {
         super(...args, {
             description: "Adds a song the the queue.",
-            usage: "<url:string>",
+            usage: "[url:string]",
             extendedHelp: ["Some song"]
         });
     }
@@ -50,7 +50,7 @@ module.exports = class extends MusicCommand {
             }
 
             const number = await msg.awaitReply(`Choose a number between 1 and ${numbers}`, new MessageEmbed(msg.excigmaEmbed).setDescription(text));
-            if (number < 0 || number > numbers) {
+            if (number < 0 || number > numbers || typeof number !== "number") {
                 msg.channel.send(`${this.client.emotes.cross} | Invalid song, playing first song`);
             } else {
                 toplay = number - 1;

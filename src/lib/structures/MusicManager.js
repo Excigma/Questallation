@@ -12,12 +12,9 @@ class MusicManager {
         this.recentlyPlayed = [];
 
         this.queue = [];
-
+        this.loop = false;
         this.channel = null;
-
-
         this.autoplay = false;
-
         this._next = null;
     }
 
@@ -130,8 +127,7 @@ class MusicManager {
         this.connection.play(stream, {
             bitrate: this.voiceChannel.bitrate / 1000,
             passes: 5,
-            type: song.opus ? "webm/opus" : "unknown",
-            volume: false
+            type: song.opus ? "webm/opus" : "unknown"
         });
 
         this.pushPlayed(song.url);
