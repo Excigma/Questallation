@@ -84,9 +84,6 @@ module.exports = class extends Client {
             cross: "<a:ExcigmaCross:534470159604383744> |",
             spin: "<a:ExcigmaSpin:538917823859130368> |"
         };
-        this.credits = {
-
-        };
         this.production = production;
     }
 };

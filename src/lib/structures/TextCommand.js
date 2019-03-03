@@ -11,14 +11,15 @@ class TextCommand extends Command {
                 .setDescription(string));
 
         };
-        this.convert = (str, data) => {
-            let string = str;
-            for (const entry of Object.keys(data)) {
-                string = string.replaceAll(entry, data[entry]);
+        this.convert = (str, object) => {
+            let newsentence = "";
+            let char;
+            for (var i = 0; i <= str.length; i++) {
+                char = str.charAt(i);
+                newsentence += object[char] || object[char.toLowerCase()] || char;
             }
-            return string;
+            return newsentence;
         };
-
     }
 }
 

@@ -1,4 +1,4 @@
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 
 const converter = (str) => {
     var string = "";
@@ -19,16 +19,7 @@ module.exports = class extends Command {
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "Cancer",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: converter(str)
-        });
-
+        return this.sendText(message, converter(str));
     }
 };
 

@@ -1,4 +1,4 @@
-const { Command } = require(`${process.cwd()}/src/index`);
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
 const converter = (string) => {
     const chars = string.toUpperCase().split("");
@@ -9,7 +9,7 @@ const converter = (string) => {
 };
 
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             description: "Alternates your case",
@@ -19,15 +19,7 @@ module.exports = class extends Command {
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "Mock",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: converter(str)
-        });
+        return this.sendText(message, converter(str));
 
     }
 };

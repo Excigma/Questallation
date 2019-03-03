@@ -1,25 +1,16 @@
-const { Command } = require(`${process.cwd()}/src/index`);
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
-            description: "Alternates your case",
+            description: "Sends text into an embed",
             usage: "<Text:str>",
             extendedHelp: "This command sends text in an embed"
         });
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "Say",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: str
-        });
-
+        return this.sendText(message, str);
     }
 };

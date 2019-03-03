@@ -1,4 +1,4 @@
-const { Language, util } = require("klasa");
+const { Language, util } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Language {
 

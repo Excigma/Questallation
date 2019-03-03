@@ -1,4 +1,4 @@
-const { Command } = require(`${process.cwd()}/src/index`);
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
 const converter = (string) => {
     const finalPhrase = [];
@@ -11,24 +11,16 @@ const converter = (string) => {
 };
 
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             description: "Owo what's this",
             usage: "<Text:str>",
-            extendedHelp: "Convert your boring English sentences into amazing and exciting Engwish."
+            extendedHelp: "Convert your boring English sentences into Engwish."
         });
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "Hewwo?",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: converter(str)
-        });
+        return this.sendText(message, converter(str));
     }
 };

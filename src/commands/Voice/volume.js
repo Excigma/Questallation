@@ -28,7 +28,7 @@ module.exports = class extends MusicCommand {
             return msg.sendMessage(`<a:ExcigmaTick:534470159465971722> | ${dispatcher.volume === 0 ? "Muted" : "🔉"} Volume: ${Math.round(dispatcher.volume * 50)}%`);
         }
 
-        return msg.sendMessage("Please run the help command for this command to see how to use it");
+        return msg.sendMessage(`${this.client.emotes.spin} Add + to increase the volume slightly or  +++++++ to increase the volume by a lot. Use - to decrease volume similary`);
     }
 
 };

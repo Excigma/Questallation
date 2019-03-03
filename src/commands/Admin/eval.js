@@ -4,7 +4,7 @@ const { inspect } = require("util");
 
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
-const klasa = require("klasa");
+const klasa = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Command {
 

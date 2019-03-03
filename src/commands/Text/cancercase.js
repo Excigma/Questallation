@@ -11,6 +11,7 @@ module.exports = class extends TextCommand {
 
     async run(message, [str]) {
         let cancer = "";
+
         const splitStr = str.split("");
         for (const char of splitStr) {
             cancer += [char.toLowerCase(), char.toUpperCase()].random();
@@ -18,3 +19,4 @@ module.exports = class extends TextCommand {
         return this.sendText(message, cancer);
     }
 };
+

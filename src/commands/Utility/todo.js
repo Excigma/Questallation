@@ -4,7 +4,7 @@ Client.defaultUserSchema
   .add('TODOs', 'any', { array: true });
 */
 
-const { Command } = require("klasa");
+const { Command } = require(`${process.cwd()}/src/index`);
 
 module.exports = class extends Command {
 

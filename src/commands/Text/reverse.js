@@ -1,25 +1,17 @@
-const { Command } = require("klasa");
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             description: "Alternates your case",
             usage: "<Text:str>",
-            extendedHelp: "This command is based on the pOpUlAr MoCkInG meme."
+            extendedHelp: "This command is reverses the order of your text."
         });
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "Reverse",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: str.split("").reverse().join("")
-        });
+        return this.sendText(message, str.split("").reverse().join(""));
 
     }
 };

@@ -1,4 +1,4 @@
-const { Monitor } = require("klasa");
+const { Monitor } = require(`${process.cwd()}/src/index`);
 const { Collection } = require("discord.js");
 const pointCooldown = new Collection();
 module.exports = class extends Monitor {

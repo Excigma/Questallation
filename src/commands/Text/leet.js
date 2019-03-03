@@ -1,15 +1,7 @@
-const { Command } = require("klasa");
+const { TextCommand } = require(`${process.cwd()}/src/index`);
 
-const converter = (str) => {
-    var string = "";
-    str.split("").forEach(char => {
-        if (charMap[char]) string += charMap[char];
-        else string += char;
-    });
-    return string;
-};
 
-module.exports = class extends Command {
+module.exports = class extends TextCommand {
     constructor(...args) {
         super(...args, {
             aliases: ["1337"],
@@ -20,16 +12,7 @@ module.exports = class extends Command {
     }
 
     async run(message, [str]) {
-        message.sendEmbed({
-            title: "1337",
-            color: 0x7289DA,
-            author: {
-                name: message.author.tag,
-                icon_url: message.author.avatarURL()
-            },
-            description: converter(str)
-        });
-
+        return this.sendText(message, this.convert(str, charMap));
     }
 };
 
