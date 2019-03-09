@@ -56,7 +56,6 @@ module.exports = class extends Client {
         presence: production ? { activity: { name: "for qmhelp", type: "WATCHING" } } : { activity: { name: "for edhelp", type: "WATCHING" } },
         pieceDefaults: {
             commands: {
-                promptLimit: 1,
                 cooldown: 2,
                 deletable: true
             }

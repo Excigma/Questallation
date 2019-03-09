@@ -18,7 +18,7 @@ module.exports = class extends Route {
 		}
 
 		response.setHeader("content-type", "text/html");
-		return renderFile(`${process.cwd()}/src/routes/commands.ejs`, { path: request.path, cmds: commands }, { root: `${process.cwd()}/src/routes` }, (err, str) => {
+		return renderFile(`${process.cwd()}/src/pages/commands.ejs`, { path: request.path, cmds: commands }, { root: `${process.cwd()}/src/routes` }, (err, str) => {
 			if (err) {
 				throw err;
 			}

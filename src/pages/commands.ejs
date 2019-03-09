@@ -1,0 +1,63 @@
+<%- include('header', cmds) %>
+
+<section class="container" id="information">
+
+    <div class="box-container primary row">
+        <div class="one-full column">
+            <h1> Jump to:</h1>
+        </div>
+        <div class="one-full column">
+            <% for (var category in cmds) { %>
+            <a href="#<%- category %>">
+                <%- category %>
+            </a>
+            <br>
+            <% } %>
+        </div>
+
+    </div>
+
+    <% for (var category in cmds) { %>
+    <div class="box-container secondary row" id="<%- category%>">
+        <div class="one-full column">
+            <h1>
+                <%= category %>
+            </h1>
+            <br>
+        </div>
+
+        <div class="one-full column">
+            <div class="table-center table-container full-width" style="overflow-x: scroll;">
+                <table class="box-shadow white-dropshadow black-text full-width">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Usage</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%  const cat = cmds[category.toString()]
+                                for (var command in cat) { 
+                                      const cmd = cat[command] %>
+                        <tr>
+                            <td>
+                                <%= cmd.name %>
+                            </td>
+                            <td class="numeric">
+                                <%= cmd.usage %>
+                            </td>
+                            <td class="numeric">
+                                <%= cmd.description %>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</section>
+
+<%- include('footer') %>

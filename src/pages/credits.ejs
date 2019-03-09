@@ -1,0 +1,31 @@
+<%- include('header', credits) %>
+
+<section class="container" id="information">
+	<div class="box-container primary row">
+		<div class="one-full column">
+			<h1> Credits:</h1>
+		</div>
+		<div class="one-full column">
+			<p>Below are the people, and resources that helped to create this bot. this bot is coded with the discord.js
+				library and with run with node.js, i aim for 24/7 uptime, but it is not guaranteed, if the bot is
+				offline
+				please tag me, or you can dm me!</p>
+		</div>
+	</div>
+</section>
+
+<section class="container card-container">
+
+	<% for (const person in credits) { %>
+	<div class="card">
+		<div class="avatar">
+			<img src="<%- credits[person].avatar %>">
+		</div>
+		<h1 class="title"><%- credits[person].tag %></h1>
+		<p class="description"><%- credits[person].credits %></p>
+	</div>
+	<% } %>
+
+</section>
+
+<%- include('footer') %>
